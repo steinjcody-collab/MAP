@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cody Stein — Listings Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root{
+    --ink:#23342E;
+    --sand:#F4EFE4;
+    --card:#FFFDF8;
+    --hairline:#D8CFBA;
+    --clay:#A64B2A;
+    --sage:#5F7856;
+    --muted:#7A7364;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;background:var(--sand);color:var(--ink);font-family:'Inter',sans-serif;}
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 28px;
+    border-bottom:1px solid var(--hairline);
+    background:var(--sand);
+    position:relative;
+    z-index:20;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .brand{display:flex;flex-direction:column;line-height:1.1;}
+  .brand .name{font-family:'Fraunces',serif;font-weight:600;font-size:22px;letter-spacing:-0.01em;}
+  .brand .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:2px;}
+
+  .filters{display:flex;gap:8px;}
+  .filters button{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    padding:8px 16px;
+    border-radius:999px;
+    border:1px solid var(--hairline);
+    background:var(--card);
+    color:var(--ink);
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .filters button.active[data-type="all"]{background:var(--ink);color:var(--sand);border-color:var(--ink);}
+  .filters button.active[data-type="sale"]{background:var(--clay);color:#fff;border-color:var(--clay);}
+  .filters button.active[data-type="rent"]{background:var(--sage);color:#fff;border-color:var(--sage);}
+  .filters button:hover:not(.active){border-color:var(--ink);}
+
+  .layout{display:flex;height:calc(100% - 72px);}
+  #list{
+    width:340px;
+    min-width:340px;
+    overflow-y:auto;
+    border-right:1px solid var(--hairline);
+    background:var(--card);
+  }
+  .listing-card{
+    display:flex;
+    gap:12px;
+    padding:14px 20px;
+    border-bottom:1px solid var(--hairline);
+    cursor:pointer;
+    transition:background .12s ease;
+  }
+  .listing-card:hover{background:var(--sand);}
+  .listing-card .thumb{
+    width:64px;height:64px;border-radius:8px;flex-shrink:0;
+    background-size:cover;background-position:center;
+    background-color:var(--hairline);
+    border:1px solid var(--hairline);
+  }
+  .listing-card .info{min-width:0;}
+  .listing-card .price{
+    font-family:'Fraunces',serif;font-weight:600;font-size:17px;
+  }
+  .listing-card.rent .price::after{content:" /mo";font-family:'Inter',sans-serif;font-weight:500;font-size:12px;color:var(--muted);}
+  .listing-card .addr{font-size:12.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .listing-card .stats{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:5px;letter-spacing:.02em;}
+  .listing-card .pill{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;
+    margin-top:6px;
+  }
+  .listing-card.sale .pill{background:rgba(166,75,42,.12);color:var(--clay);}
+  .listing-card.rent .pill{background:rgba(95,120,86,.14);color:var(--sage);}
+
+  #map{flex:1;}
+
+  .leaflet-popup-content-wrapper{
+    background:var(--card);border-radius:10px;
+  }
+  .popup{font-family:'Inter',sans-serif;width:220px;}
+  .popup img{width:100%;height:120px;object-fit:cover;border-radius:6px;margin-bottom:8px;background:var(--hairline);}
+  .popup .price{font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:var(--ink);}
+  .popup .addr{font-size:12px;color:var(--muted);margin:2px 0 6px;}
+  .popup .stats{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);}
+
+  .marker-pin{
+    width:30px;height:30px;border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--card);
+    box-shadow:0 1px 3px rgba(0,0,0,.35);
+  }
+  .marker-pin.sale{background:var(--clay);}
+  .marker-pin.rent{background:var(--sage);}
+
+  footer{
+    position:fixed;bottom:0;left:0;right:0;
+    padding:6px 16px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    color:var(--muted);
+    background:var(--sand);
+    border-top:1px solid var(--hairline);
+    z-index:20;
+    text-align:right;
+  }
+
+  @media (max-width: 760px){
+    .layout{flex-direction:column;height:auto;}
+    #list{width:100%;min-width:0;max-height:38vh;order:2;}
+    #map{height:52vh;order:1;}
+    header{padding:14px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="name">Cody Stein</span>
+    <span class="tag">Current listings</span>
+  </div>
+  <div class="filters">
+    <button data-type="all" class="active">All</button>
+    <button data-type="sale">For Sale</button>
+    <button data-type="rent">For Rent</button>
+  </div>
+</header>
+
+<div class="layout">
+  <div id="list"></div>
+  <div id="map"></div>
+</div>
+
+<footer id="updated"></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map = L.map('map', { zoomControl: true }).setView([33.6, -112.0], 9);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+  maxZoom: 19
+}).addTo(map);
+
+let ALL_LISTINGS = [];
+let activeFilter = 'all';
+let markers = [];
+
+function fmtPrice(l){
+  if(l.type === 'rent'){
+    return '$' + Number(l.price).toLocaleString() + '/mo';
+  }
+  return '$' + Number(l.price).toLocaleString();
+}
+
+function makeIcon(type){
+  return L.divIcon({
+    className: '',
+    html: `<div class="marker-pin ${type}"></div>`,
+    iconSize: [30,30],
+    iconAnchor: [15,28],
+    popupAnchor: [0,-26]
+  });
+}
+
+function popupHtml(l){
+  const img = l.photo
+    ? `<img src="${l.photo}" alt="">`
+    : `<div style="width:100%;height:120px;border-radius:6px;margin-bottom:8px;background:var(--hairline);"></div>`;
+  return `<div class="popup">
+    ${img}
+    <div class="price">${fmtPrice(l)}</div>
+    <div class="addr">${l.address}</div>
+    <div class="stats">${l.beds} bd · ${l.baths} ba · ${Number(l.sqft).toLocaleString()} sqft</div>
+  </div>`;
+}
+
+function render(){
+  document.getElementById('list').innerHTML = '';
+  markers.forEach(m => map.removeLayer(m));
+  markers = [];
+
+  const filtered = ALL_LISTINGS.filter(l => activeFilter === 'all' || l.type === activeFilter);
+  const bounds = [];
+
+  filtered.forEach(l => {
+    if(l.lat == null || l.lng == null) return;
+    bounds.push([l.lat, l.lng]);
+
+    const marker = L.marker([l.lat, l.lng], { icon: makeIcon(l.type) })
+      .addTo(map)
+      .bindPopup(popupHtml(l));
+    markers.push(marker);
+
+    const card = document.createElement('div');
+    card.className = `listing-card ${l.type}`;
+    card.innerHTML = `
+      <div class="thumb" style="${l.photo ? `background-image:url('${l.photo}')` : ''}"></div>
+      <div class="info">
+        <div class="price">${fmtPrice(l)}</div>
+        <div class="addr">${l.address}</div>
+        <div class="stats">${l.beds} bd · ${l.baths} ba · ${Number(l.sqft).toLocaleString()} sqft</div>
+        <span class="pill">${l.type === 'sale' ? 'For sale' : 'For rent'}</span>
+      </div>`;
+    card.addEventListener('click', () => {
+      map.setView([l.lat, l.lng], 15);
+      marker.openPopup();
+    });
+    document.getElementById('list').appendChild(card);
+  });
+
+  if(bounds.length){
+    map.fitBounds(bounds, { padding: [40,40], maxZoom: 14 });
+  }
+}
+
+document.querySelectorAll('.filters button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.type;
+    render();
+  });
+});
+
+fetch('listings.json?_=' + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    ALL_LISTINGS = data.listings || [];
+    if(data.updated){
+      const d = new Date(data.updated);
+      document.getElementById('updated').textContent = 'Listings updated ' + d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+    }
+    render();
+  })
+  .catch(err => {
+    document.getElementById('list').innerHTML = '<div style="padding:20px;color:var(--muted);font-size:13px;">Could not load listings.json</div>';
+    console.error(err);
+  });
+</script>
+</body>
+</html>

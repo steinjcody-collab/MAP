@@ -165,7 +165,7 @@ def main():
     newly_geocoded = 0
  
     for row in rows:
-        address = row["address"].strip()
+        address = row["address"].strip().strip(",").strip()
         key = address.lower()
  
         if key in existing_coords:

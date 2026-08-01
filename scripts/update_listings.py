@@ -9,8 +9,10 @@ Data source: a Google Sheet you maintain, published to the web as CSV
 SHEET_CSV_URL below (or the SHEET_CSV_URL repo variable/secret — see README).
  
 This script does NOT touch Homes.com or any MLS site. It only reads the
-sheet you control and calls the free OpenStreetMap Nominatim geocoder,
-which is fine to use for a low-volume job like this one request/day.
+sheet you control and geocodes addresses using the free US Census Bureau
+geocoder (built on official TIGER/Line street data, generally more precise
+than OSM interpolation), falling back to OpenStreetMap Nominatim only if
+Census can't find a match.
 """
  
 import csv
@@ -31,7 +33,85 @@ LISTINGS_PATH = os.path.join(REPO_ROOT, "listings.json")
 SHEET_CSV_URL = os.environ.get("SHEET_CSV_URL", "")
  
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
+CENSUS_URL = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress"
 USER_AGENT = "cody-stein-listings-map/1.0 (contact via GitHub repo)"
+
+UNIT_RE = re.compile(
+    r"\b(unit|apt|apartment|suite|ste|#)\.?\s*[\w-]+\b", re.IGNORECASE
+)
+
+
+def strip_unit(address):
+    """Unit/apartment numbers ('Unit 3', 'Apt 2B', '#4') add noise that can
+    throw off a free-text geocoder's street match — strip them before
+    geocoding, but keep the original address for display."""
+    cleaned = UNIT_RE.sub("", address)
+    cleaned = re.sub(r"\s*,\s*,", ",", cleaned)  # collapse a hole left by the strip
+    cleaned = re.sub(r"\s+,", ",", cleaned)       # drop space left before a comma
+    cleaned = re.sub(r"\s+", " ", cleaned).strip(" ,")
+    return cleaned
+
+
+def geocode_census(address):
+    """US Census Bureau geocoder — built on official TIGER/Line street
+    centerline data. Free, no API key, and generally far more precise for
+    US street addresses than OSM-derived interpolation (which is what can
+    cause e.g. a '4th St' address to land on '5th St')."""
+    params = urllib.parse.urlencode({
+        "address": address,
+        "benchmark": "Public_AR_Current",
+        "format": "json",
+    })
+    url = f"{CENSUS_URL}?{params}"
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except Exception as e:
+        print(f"  Census geocode error for '{address}': {e}", file=sys.stderr)
+        return None
+    matches = data.get("result", {}).get("addressMatches", [])
+    if not matches:
+        return None
+    coords = matches[0]["coordinates"]
+    return float(coords["y"]), float(coords["x"])
+
+
+def geocode_nominatim(address):
+    params = urllib.parse.urlencode({
+        "q": address,
+        "format": "json",
+        "limit": 1,
+        "countrycodes": "us",
+    })
+    url = f"{NOMINATIM_URL}?{params}"
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            results = json.loads(resp.read().decode("utf-8"))
+    except Exception as e:
+        print(f"  Nominatim geocode error for '{address}': {e}", file=sys.stderr)
+        return None
+    if not results:
+        return None
+    return float(results[0]["lat"]), float(results[0]["lon"])
+
+
+def geocode(address):
+    # Try Census first on the address as written.
+    result = geocode_census(address)
+    if result:
+        return result
+    # Census can be picky about unit numbers too — retry without one.
+    stripped = strip_unit(address)
+    if stripped != address:
+        result = geocode_census(stripped)
+        if result:
+            return result
+    # Last resort: Nominatim, also with the unit number stripped, since it's
+    # free-text parser gets thrown off by "Unit 3" style suffixes.
+    time.sleep(1)  # Nominatim usage policy: max 1 request/sec
+    return geocode_nominatim(stripped)
  
  
 def fetch_csv_rows(url):
@@ -57,26 +137,6 @@ def load_existing_coords():
         if l.get("lat") is not None and l.get("lng") is not None:
             coords[l["address"].strip().lower()] = (l["lat"], l["lng"])
     return coords
- 
- 
-def geocode(address):
-    params = urllib.parse.urlencode({
-        "q": address,
-        "format": "json",
-        "limit": 1,
-        "countrycodes": "us",
-    })
-    url = f"{NOMINATIM_URL}?{params}"
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            results = json.loads(resp.read().decode("utf-8"))
-    except Exception as e:
-        print(f"  geocode error for '{address}': {e}", file=sys.stderr)
-        return None
-    if not results:
-        return None
-    return float(results[0]["lat"]), float(results[0]["lon"])
  
  
 def to_number(value, default=0):
@@ -119,7 +179,6 @@ def main():
             else:
                 lat, lng = result
                 newly_geocoded += 1
-            time.sleep(1)  # Nominatim usage policy: max 1 request/sec
  
         listings.append({
             "address": address,

@@ -1,0 +1,40 @@
+name: Update Listings
+on:
+  schedule:
+    # Runs once a day at 13:00 UTC (~6am Phoenix time, which doesn't observe DST)
+    - cron: '0 13 * * *'
+  workflow_dispatch: {}  # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run update script
+        env:
+          SHEET_CSV_URL: ${{ secrets.SHEET_CSV_URL }}
+        run: python scripts/update_listings.py
+
+      - name: Commit updated listings.json
+        run: |
+          git config user.name "listings-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add listings.json
+          git diff --cached --quiet && echo "No changes" || git commit -m "Update listings ($(date -u +'%Y-%m-%d'))"
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            echo "Push rejected (remote moved) — pulling and retrying (attempt $i)..."
+            git pull --rebase origin main
+          done
+          echo "Push failed after retries"
+          exit 1

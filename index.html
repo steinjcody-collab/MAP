@@ -6,7 +6,7 @@
 <title>Cody Stein — Listings Map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
 <style>
   :root{
     --ink:#23342E;
@@ -162,8 +162,13 @@
 
 <footer id="updated"></footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
+if(typeof L === 'undefined'){
+  document.getElementById('map').innerHTML = '<div style="padding:20px;color:#7A7364;font-size:13px;">Map library failed to load — check your connection and refresh.</div>';
+  throw new Error('Leaflet failed to load from CDN');
+}
+
 const map = L.map('map', { zoomControl: true }).setView([33.6, -112.0], 9);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO',

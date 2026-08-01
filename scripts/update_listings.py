@@ -67,6 +67,46 @@ def parse_parts(address):
     return street, city, state, postalcode
 
 
+def extract_housenumber(text):
+    m = re.match(r"\s*(\d+)", text or "")
+    return m.group(1) if m else None
+
+
+def pick_best_census_match(matches, expected_hn):
+    """Census can return more than one candidate for an ambiguous address.
+    Prefer whichever one's house number actually matches what we asked
+    for, instead of always trusting the first one back."""
+    if not matches:
+        return None
+    if expected_hn:
+        for m in matches:
+            if extract_housenumber(m.get("matchedAddress", "")) == expected_hn:
+                return m
+    return matches[0]
+
+
+def pick_best_nominatim_match(results, expected_hn):
+    """Same idea for Nominatim: prefer an exact house-number match among
+    the returned candidates, then break ties by Nominatim's own
+    'importance' score rather than list order."""
+    if not results:
+        return None
+
+    def importance(r):
+        try:
+            return float(r.get("importance", 0))
+        except (TypeError, ValueError):
+            return 0.0
+
+    if expected_hn:
+        exact = [r for r in results if r.get("address", {}).get("house_number") == expected_hn]
+        if exact:
+            exact.sort(key=importance, reverse=True)
+            return exact[0]
+
+    return sorted(results, key=importance, reverse=True)[0]
+
+
 def geocode_census(address):
     """US Census Bureau geocoder — built on official TIGER/Line street
     centerline data. Free, no API key, and generally far more precise for
@@ -86,9 +126,10 @@ def geocode_census(address):
         print(f"  Census geocode error for '{address}': {e}", file=sys.stderr)
         return None
     matches = data.get("result", {}).get("addressMatches", [])
-    if not matches:
+    best = pick_best_census_match(matches, extract_housenumber(address))
+    if not best:
         return None
-    coords = matches[0]["coordinates"]
+    coords = best["coordinates"]
     return float(coords["y"]), float(coords["x"])
 
 
@@ -96,8 +137,9 @@ def geocode_nominatim(address):
     params = urllib.parse.urlencode({
         "q": address,
         "format": "json",
-        "limit": 1,
+        "limit": 5,
         "countrycodes": "us",
+        "addressdetails": 1,
     })
     url = f"{NOMINATIM_URL}?{params}"
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
@@ -107,9 +149,10 @@ def geocode_nominatim(address):
     except Exception as e:
         print(f"  Nominatim geocode error for '{address}': {e}", file=sys.stderr)
         return None
-    if not results:
+    best = pick_best_nominatim_match(results, extract_housenumber(address))
+    if not best:
         return None
-    return float(results[0]["lat"]), float(results[0]["lon"])
+    return float(best["lat"]), float(best["lon"])
 
 
 def geocode_nominatim_structured(street, city, state, postalcode):
@@ -124,8 +167,9 @@ def geocode_nominatim_structured(street, city, state, postalcode):
         "state": state or "AZ",
         "country": "USA",
         "format": "json",
-        "limit": 1,
+        "limit": 5,
         "countrycodes": "us",
+        "addressdetails": 1,
     }
     if postalcode:
         params["postalcode"] = postalcode
@@ -137,9 +181,10 @@ def geocode_nominatim_structured(street, city, state, postalcode):
     except Exception as e:
         print(f"  Nominatim (structured) geocode error for '{street}, {city}': {e}", file=sys.stderr)
         return None
-    if not results:
+    best = pick_best_nominatim_match(results, extract_housenumber(street))
+    if not best:
         return None
-    return float(results[0]["lat"]), float(results[0]["lon"])
+    return float(best["lat"]), float(best["lon"])
 
 
 def geocode(address):

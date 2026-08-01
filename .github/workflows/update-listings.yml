@@ -1,5 +1,4 @@
-name: .github/workflows/update-listings.yml
-
+name: Update Listings
 on:
   schedule:
     # Runs once a day at 13:00 UTC (~6am Phoenix time, which doesn't observe DST)

@@ -52,6 +52,21 @@ def strip_unit(address):
     return cleaned
 
 
+def parse_parts(address):
+    """Split 'street, city, state[, zip]' into components for a structured
+    (rather than free-text) geocoder query."""
+    parts = [p.strip() for p in address.split(",") if p.strip()]
+    street = strip_unit(parts[0]) if parts else ""
+    city = parts[1] if len(parts) > 1 else ""
+    # last part might be "AZ" or "AZ 86005" — split off a trailing zip if present
+    state, postalcode = "", ""
+    if len(parts) > 2:
+        tail = parts[2].split()
+        state = tail[0] if tail else ""
+        postalcode = tail[1] if len(tail) > 1 else ""
+    return street, city, state, postalcode
+
+
 def geocode_census(address):
     """US Census Bureau geocoder — built on official TIGER/Line street
     centerline data. Free, no API key, and generally far more precise for
@@ -97,21 +112,70 @@ def geocode_nominatim(address):
     return float(results[0]["lat"]), float(results[0]["lon"])
 
 
+def geocode_nominatim_structured(street, city, state, postalcode):
+    """Structured query — separate street/city/state/zip fields, which
+    Nominatim's parser tends to match more reliably than one free-text
+    string, especially for short/ambiguous street names."""
+    if not street or not city:
+        return None
+    params = {
+        "street": street,
+        "city": city,
+        "state": state or "AZ",
+        "country": "USA",
+        "format": "json",
+        "limit": 1,
+        "countrycodes": "us",
+    }
+    if postalcode:
+        params["postalcode"] = postalcode
+    url = f"{NOMINATIM_URL}?{urllib.parse.urlencode(params)}"
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            results = json.loads(resp.read().decode("utf-8"))
+    except Exception as e:
+        print(f"  Nominatim (structured) geocode error for '{street}, {city}': {e}", file=sys.stderr)
+        return None
+    if not results:
+        return None
+    return float(results[0]["lat"]), float(results[0]["lon"])
+
+
 def geocode(address):
-    # Try Census first on the address as written.
-    result = geocode_census(address)
-    if result:
-        return result
-    # Census can be picky about unit numbers too — retry without one.
+    """Try every combination we reasonably can, across both geocoders,
+    before giving up on an address. Order is chosen so the free (no rate
+    limit) Census lookups run first, and the rate-limited Nominatim calls
+    — which need a sleep between each — run last."""
     stripped = strip_unit(address)
-    if stripped != address:
-        result = geocode_census(stripped)
+    street, city, state, postalcode = parse_parts(address)
+
+    attempts = [
+        ("Census (as written)", lambda: geocode_census(address)),
+        ("Census (no unit)", lambda: geocode_census(stripped) if stripped != address else None),
+    ]
+
+    for label, fn in attempts:
+        result = fn()
         if result:
+            print(f"  matched via {label}")
             return result
-    # Last resort: Nominatim, also with the unit number stripped, since it's
-    # free-text parser gets thrown off by "Unit 3" style suffixes.
-    time.sleep(1)  # Nominatim usage policy: max 1 request/sec
-    return geocode_nominatim(stripped)
+
+    # Nominatim calls are rate-limited to 1/sec — only reached if Census
+    # couldn't resolve the address at all.
+    nominatim_attempts = [
+        ("Nominatim (structured)", lambda: geocode_nominatim_structured(street, city, state, postalcode)),
+        ("Nominatim (no unit)", lambda: geocode_nominatim(stripped)),
+        ("Nominatim (as written)", lambda: geocode_nominatim(address) if address != stripped else None),
+    ]
+    for label, fn in nominatim_attempts:
+        time.sleep(1)
+        result = fn()
+        if result:
+            print(f"  matched via {label}")
+            return result
+
+    return None
  
  
 def fetch_csv_rows(url):

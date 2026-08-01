@@ -58,8 +58,8 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/0470063105-662500032/4701-n-68th-st-scottsdale-az-unit-111-primaryphoto.jpg",
-      "lat": 33.5081,
-      "lng": -111.9268
+      "lat": null,
+      "lng": null
     },
     {
       "address": "2150 E Bell Rd Unit 1056, Phoenix, AZ",

@@ -1,4 +1,4 @@
-name: Update listings
+name: .github/workflows/update-listings.yml
 
 on:
   schedule:

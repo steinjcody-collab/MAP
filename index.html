@@ -102,6 +102,14 @@
   .popup .price{font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:var(--ink);}
   .popup .addr{font-size:12px;color:var(--muted);margin:2px 0 6px;}
   .popup .stats{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);}
+  .popup .meta{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
+  .popup .pill{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;
+  }
+  .popup.sale .pill{background:rgba(166,75,42,.12);color:var(--clay);}
+  .popup.rent .pill{background:rgba(95,120,86,.14);color:var(--sage);}
+  .popup .status{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);}
 
   .marker-pin{
     width:30px;height:30px;border-radius:50% 50% 50% 0;
@@ -157,7 +165,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const map = L.map('map', { zoomControl: true }).setView([33.6, -112.0], 9);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
   maxZoom: 19
 }).addTo(map);
@@ -187,11 +195,15 @@ function popupHtml(l){
   const img = l.photo
     ? `<img src="${l.photo}" alt="">`
     : `<div style="width:100%;height:120px;border-radius:6px;margin-bottom:8px;background:var(--hairline);"></div>`;
-  return `<div class="popup">
+  return `<div class="popup ${l.type}">
     ${img}
     <div class="price">${fmtPrice(l)}</div>
     <div class="addr">${l.address}</div>
     <div class="stats">${l.beds} bd · ${l.baths} ba · ${Number(l.sqft).toLocaleString()} sqft</div>
+    <div class="meta">
+      <span class="pill">${l.type === 'sale' ? 'For sale' : 'For rent'}</span>
+      <span class="status">${l.status || ''}</span>
+    </div>
   </div>`;
 }
 

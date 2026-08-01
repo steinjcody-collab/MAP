@@ -22,8 +22,8 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
-      "lat": 33.4255,
-      "lng": -111.9542
+      "lat": null,
+      "lng": null
     },
     {
       "address": "1234 W 4th St Unit 2, Tempe, AZ",
@@ -34,8 +34,8 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/5477885205-408267032/1234-w-4th-st-tempe-az-primaryphoto.jpg",
-      "lat": 33.4256,
-      "lng": -111.9545
+      "lat": null,
+      "lng": null
     },
     {
       "address": "9040 E Winchcomb Dr, Scottsdale, AZ",

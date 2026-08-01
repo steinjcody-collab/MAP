@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-31T00:00:00Z",
+  "updated": "2026-08-01T16:29:48Z",
   "listings": [
     {
-      "address": "3425 W Picket Line, Flagstaff, AZ",
+      "address": "3425 W Picket Line, Flagstaff, AZ,",
       "price": 1500000,
       "beds": 3,
       "baths": 3,
@@ -10,12 +10,12 @@
       "status": "Active",
       "type": "sale",
       "photo": "https://images.homes.com/listings/102/0350045984-171274122/3425-w-picket-line-flagstaff-az-primaryphoto.jpg",
-      "lat": 35.1466,
-      "lng": -111.6462
+      "lat": null,
+      "lng": null
     },
     {
       "address": "1229 W 4th St Unit 3, Tempe, AZ",
-      "price": 1825,
+      "price": 0,
       "beds": 2,
       "baths": 1,
       "sqft": 825,
@@ -43,7 +43,7 @@
       "beds": 2,
       "baths": 2,
       "sqft": 1100,
-      "status": "Active",
+      "status": "Active,",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/6089802205-977613032/9040-e-winchcomb-dr-scottsdale-az-primaryphoto.jpg",
       "lat": 33.6434,
@@ -74,40 +74,40 @@
       "lng": -112.0339
     },
     {
-      "address": "2310 W Spur Dr, Phoenix, AZ",
-      "price": 3250,
-      "beds": 4,
-      "baths": 2,
-      "sqft": 2297,
-      "status": "Active",
-      "type": "rent",
+      "address": "2310 W Spur Dr, Phoenix, AZ,3250,4,2,2297,Active,rent,",
+      "price": 0,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "status": "",
+      "type": "",
       "photo": "",
-      "lat": 33.6547,
-      "lng": -112.1057
+      "lat": null,
+      "lng": null
     },
     {
-      "address": "3173 W Peak View Rd, Phoenix, AZ",
-      "price": 4250,
-      "beds": 4,
-      "baths": 3,
-      "sqft": 2649,
-      "status": "Active",
-      "type": "rent",
+      "address": "3173 W Peak View Rd, Phoenix, AZ,4250,4,3,2649,Active,rent,",
+      "price": 0,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "status": "",
+      "type": "",
       "photo": "",
-      "lat": 33.6935,
-      "lng": -112.1189
+      "lat": null,
+      "lng": null
     },
     {
-      "address": "2209 S Granada Dr Unit C, Tempe, AZ",
-      "price": 1250,
-      "beds": 1,
-      "baths": 1,
-      "sqft": 650,
-      "status": "Active",
-      "type": "rent",
+      "address": "2209 S Granada Dr Unit C, Tempe, AZ,1250,1,1,650,Active,rent,",
+      "price": 0,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "status": "",
+      "type": "",
       "photo": "",
-      "lat": 33.3872,
-      "lng": -111.9267
+      "lat": null,
+      "lng": null
     }
   ]
 }

@@ -185,6 +185,15 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
 let ALL_LISTINGS = [];
 let activeFilter = 'all';
 let markers = [];
+  // --- URL-based filter lock: ?filter=rent or ?filter=sale ---
+const urlParams = new URLSearchParams(window.location.search);
+const lockedFilter = urlParams.get('filter');
+if (lockedFilter === 'rent' || lockedFilter === 'sale') {
+  activeFilter = lockedFilter;
+  document.querySelector('.filters').style.display = 'none';
+  document.querySelector('.brand .tag').textContent =
+    lockedFilter === 'rent' ? 'Current rentals' : 'Current listings for sale';
+}
 
 function fmtPrice(l){
   if(l.type === 'rent'){

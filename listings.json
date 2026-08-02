@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-02T06:58:37Z",
+  "updated": "2026-08-02T07:04:37Z",
   "listings": [
     {
       "address": "3425 W Picket Line, Flagstaff, AZ",
@@ -10,7 +10,7 @@
       "status": "Active",
       "type": "sale",
       "photo": "https://images.homes.com/listings/102/0350045984-171274122/3425-w-picket-line-flagstaff-az-primaryphoto.jpg",
-      "url": "",
+      "url": "https://www.homes.com/property/3425-w-picket-line-flagstaff-az/1srj6tytbsk6w/",
       "lat": 35.171692902886,
       "lng": -111.703135417813
     },
@@ -23,7 +23,7 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
-      "url": "",
+      "url": "https://www.homes.com/property/1229-w-4th-st-tempe-az-unit-3/0bcxees6eqbm7/",
       "lat": 33.426399336763,
       "lng": -111.957311175535
     },
@@ -36,7 +36,7 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/5477885205-408267032/1234-w-4th-st-tempe-az-primaryphoto.jpg",
-      "url": "",
+      "url": "https://www.homes.com/property/1234-w-4th-st-tempe-az-unit-2/216rf5ymv7y74/",
       "lat": 33.426514454727,
       "lng": -111.957436416019
     },

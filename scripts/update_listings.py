@@ -298,6 +298,7 @@ def main():
             "status": row.get("status", "Active").strip(),
             "type": row.get("type", "sale").strip().lower(),
             "photo": row.get("photo", "").strip(),
+            "url": row.get("url", "").strip(),
             "lat": lat,
             "lng": lng,
         })

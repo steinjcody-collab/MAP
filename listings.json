@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-01T23:33:48Z",
+  "updated": "2026-08-02T06:58:37Z",
   "listings": [
     {
       "address": "3425 W Picket Line, Flagstaff, AZ",
@@ -10,6 +10,7 @@
       "status": "Active",
       "type": "sale",
       "photo": "https://images.homes.com/listings/102/0350045984-171274122/3425-w-picket-line-flagstaff-az-primaryphoto.jpg",
+      "url": "",
       "lat": 35.171692902886,
       "lng": -111.703135417813
     },
@@ -22,6 +23,7 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
+      "url": "",
       "lat": 33.426399336763,
       "lng": -111.957311175535
     },
@@ -34,6 +36,7 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/5477885205-408267032/1234-w-4th-st-tempe-az-primaryphoto.jpg",
+      "url": "",
       "lat": 33.426514454727,
       "lng": -111.957436416019
     },
@@ -46,6 +49,7 @@
       "status": "Active,",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/6089802205-977613032/9040-e-winchcomb-dr-scottsdale-az-primaryphoto.jpg",
+      "url": "",
       "lat": 33.6434,
       "lng": -111.8901
     },
@@ -58,8 +62,9 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/0470063105-662500032/4701-n-68th-st-scottsdale-az-unit-111-primaryphoto.jpg",
-      "lat": null,
-      "lng": null
+      "url": "",
+      "lat": 33.505623702104,
+      "lng": -111.934616636341
     },
     {
       "address": "2150 E Bell Rd Unit 1056, Phoenix, AZ",
@@ -70,6 +75,7 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/2669082794-730065622/2150-e-bell-rd-phoenix-az-unit-1056-primaryphoto.jpg",
+      "url": "",
       "lat": 33.6384,
       "lng": -112.0339
     },
@@ -82,6 +88,7 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/4594327694-638681622/2310-w-spur-dr-phoenix-az-primaryphoto.jpg",
+      "url": "",
       "lat": 33.7265795,
       "lng": -112.1086215
     },
@@ -94,6 +101,7 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/210/1077242794-875969522/3173-w-peak-view-rd-phoenix-az-primaryphoto.jpg?t=p",
+      "url": "",
       "lat": 33.7473023,
       "lng": -112.1271217
     },
@@ -106,6 +114,7 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/9309100105-075691522/2209-s-granada-dr-tempe-az-unit-c-primaryphoto.jpg",
+      "url": "",
       "lat": 33.404642436173,
       "lng": -111.927889379256
     }

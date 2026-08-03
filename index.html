@@ -100,6 +100,11 @@
   .popup .view-link{margin-top:10px;}
 
   #map{flex:1;}
+  /* Safety net: if leaflet.css fails to load (e.g. blocked on a mobile
+     network or by a content blocker), Leaflet's own container can end up
+     with no width/height/position even though #map itself is sized
+     correctly — this guarantees it fills #map regardless. */
+  #map .leaflet-container{width:100% !important;height:100% !important;position:relative !important;background:var(--sand);}
 
   .leaflet-popup-content-wrapper{
     background:var(--card);border-radius:10px;
@@ -177,10 +182,29 @@ if(typeof L === 'undefined'){
 }
 
 const map = L.map('map', { zoomControl: true }).setView([33.6, -112.0], 9);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+
+const primaryTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
   maxZoom: 19
 }).addTo(map);
+
+// Some mobile networks/browsers block or throttle third-party CDN tile
+// requests (cartocdn.com) in ways desktop doesn't hit. If enough tiles
+// fail to load shortly after the map opens, fall back to OpenStreetMap's
+// own tile server, which is more consistently reachable everywhere.
+let tileErrorCount = 0;
+let fallbackApplied = false;
+primaryTiles.on('tileerror', () => {
+  tileErrorCount++;
+  if(tileErrorCount >= 3 && !fallbackApplied){
+    fallbackApplied = true;
+    map.removeLayer(primaryTiles);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 19
+    }).addTo(map);
+  }
+});
 
 // Leaflet sizes itself at creation time, which can happen before mobile
 // CSS (e.g. the #map height set in the @media rule) has fully applied —

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-03T10:49:50Z",
+  "updated": "2026-08-03T10:54:26Z",
   "listings": [
     {
       "address": "3425 W Picket Line, Flagstaff, AZ",
@@ -25,7 +25,7 @@
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
       "url": "https://www.homes.com/property/1229-w-4th-st-tempe-az-unit-3/0bcxees6eqbm7/",
-      "deal": "$500 off first month",
+      "deal": "$500 off",
       "lat": 33.426399336763,
       "lng": -111.957311175535
     },
@@ -39,7 +39,7 @@
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/5477885205-408267032/1234-w-4th-st-tempe-az-primaryphoto.jpg",
       "url": "https://www.homes.com/property/1234-w-4th-st-tempe-az-unit-2/216rf5ymv7y74/",
-      "deal": "$500 off first month",
+      "deal": "$500 off",
       "lat": 33.426514454727,
       "lng": -111.957436416019
     },
@@ -123,7 +123,7 @@
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/9309100105-075691522/2209-s-granada-dr-tempe-az-unit-c-primaryphoto.jpg",
       "url": "https://www.homes.com/property/2209-s-granada-dr-tempe-az-unit-c/w1ycsfqfc492g/",
-      "deal": "$500 off first month",
+      "deal": "$500 off",
       "lat": 33.404642436173,
       "lng": -111.927889379256
     },
@@ -151,7 +151,7 @@
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/8226025405-288718132/1222-w-4th-st-tempe-az-unit-2-primaryphoto.jpg",
       "url": "https://www.homes.com/property/1222-w-4th-st-tempe-az-unit-2/8v0pqgqqnvle4/",
-      "deal": "$500 off first month",
+      "deal": "$500 off",
       "lat": 33.426513398694,
       "lng": -111.957184555482
     }

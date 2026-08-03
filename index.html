@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
 <style>
   :root{
     --ink:#23342E;
@@ -61,6 +63,7 @@
     overflow-y:auto;
     border-right:1px solid var(--hairline);
     background:var(--card);
+    padding-bottom:16px;
   }
   .listing-card{
     display:flex;
@@ -164,8 +167,14 @@
 
   @media (max-width: 760px){
     .layout{flex-direction:column;height:auto;}
-    #list{width:100%;min-width:0;max-height:38vh;order:2;}
-    #map{height:52vh;order:1;}
+    #list{width:100%;min-width:0;max-height:55vh;order:2;}
+    /* #map inherits "flex:1" from the desktop rule above, which sets
+       flex-basis:0%. Inside this mobile layout, .layout has height:auto —
+       so there's no definite space for flex-grow to fill, and some mobile
+       browsers (notably iOS Safari) then render #map at 0 actual height,
+       ignoring the height:52vh below entirely. Removing the flex behavior
+       here makes the explicit height the real, honored size. */
+    #map{height:45vh;min-height:45vh;flex:none;order:1;}
     header{padding:14px 16px;}
   }
 </style>
@@ -192,6 +201,7 @@
 <footer id="updated"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
 if(typeof L === 'undefined'){
   document.getElementById('map').innerHTML = '<div style="padding:20px;color:#7A7364;font-size:13px;">Map library failed to load — check your connection and refresh.</div>';
@@ -199,6 +209,32 @@ if(typeof L === 'undefined'){
 }
 
 const map = L.map('map', { zoomControl: true }).setView([33.6, -112.0], 9);
+
+// Groups pins into a single numbered circle when they're close together at
+// the current zoom level, and automatically splits them apart again once
+// you zoom in far enough to tell them apart individually.
+const clusterGroup = L.markerClusterGroup({
+  maxClusterRadius: 50,
+  iconCreateFunction: function(cluster) {
+    const count = cluster.getChildCount();
+    return L.divIcon({
+      html: `<div style="
+        background: var(--ink);
+        color: var(--sand);
+        width: 38px; height: 38px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 600; font-size: 14px;
+        border: 2px solid var(--card);
+        box-shadow: 0 1px 4px rgba(0,0,0,.4);
+      ">${count}</div>`,
+      className: '',
+      iconSize: [38, 38]
+    });
+  }
+});
+map.addLayer(clusterGroup);
 
 const primaryTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
@@ -280,7 +316,7 @@ function popupHtml(l){
 
 function render(){
   document.getElementById('list').innerHTML = '';
-  markers.forEach(m => map.removeLayer(m));
+  clusterGroup.clearLayers();
   markers = [];
 
   const filtered = ALL_LISTINGS.filter(l => activeFilter === 'all' || l.type === activeFilter);
@@ -293,8 +329,8 @@ function render(){
     if(hasCoords){
       bounds.push([l.lat, l.lng]);
       marker = L.marker([l.lat, l.lng], { icon: makeIcon(l.type) })
-        .addTo(map)
         .bindPopup(popupHtml(l));
+      clusterGroup.addLayer(marker);
       markers.push(marker);
     }
 
@@ -312,8 +348,9 @@ function render(){
       </div>`;
     if(hasCoords){
       card.addEventListener('click', () => {
-        map.setView([l.lat, l.lng], 15);
-        marker.openPopup();
+        clusterGroup.zoomToShowLayer(marker, () => {
+          marker.openPopup();
+        });
       });
     } else {
       card.style.cursor = 'default';

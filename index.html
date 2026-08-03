@@ -147,14 +147,14 @@
 
   @media (max-width: 760px){
     .layout{flex-direction:column;height:auto;}
-    #list{width:100%;min-width:0;max-height:38vh;order:2;}
+    #list{width:100%;min-width:0;max-height:55vh;order:2;}
     /* #map inherits "flex:1" from the desktop rule above, which sets
        flex-basis:0%. Inside this mobile layout, .layout has height:auto —
        so there's no definite space for flex-grow to fill, and some mobile
        browsers (notably iOS Safari) then render #map at 0 actual height,
        ignoring the height:52vh below entirely. Removing the flex behavior
        here makes the explicit height the real, honored size. */
-    #map{height:52vh;min-height:52vh;flex:none;order:1;}
+    #map{height:45vh;min-height:45vh;flex:none;order:1;}
     header{padding:14px 16px;}
   }
 </style>

@@ -61,7 +61,6 @@
     overflow-y:auto;
     border-right:1px solid var(--hairline);
     background:var(--card);
-    padding-bottom:16px;
   }
   .listing-card{
     display:flex;
@@ -77,6 +76,16 @@
     background-size:cover;background-position:center;
     background-color:var(--hairline);
     border:1px solid var(--hairline);
+    position:relative;
+  }
+  .thumb-deal-badge{
+    position:absolute;top:-4px;left:-4px;
+    background:var(--clay);color:#fff;
+    font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;
+    text-transform:uppercase;letter-spacing:.03em;
+    padding:2px 5px;border-radius:4px;
+    box-shadow:0 1px 3px rgba(0,0,0,.35);
+    max-width:70px;line-height:1.2;
   }
   .listing-card .info{min-width:0;}
   .listing-card .price{
@@ -92,6 +101,12 @@
   }
   .listing-card.sale .pill{background:rgba(166,75,42,.12);color:var(--clay);}
   .listing-card.rent .pill{background:rgba(95,120,86,.14);color:var(--sage);}
+  .deal-pill{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;
+    margin-top:6px;margin-left:6px;
+    background:rgba(166,75,42,.9);color:#fff;
+  }
   .view-link{
     display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
     text-transform:uppercase;letter-spacing:.04em;margin-top:8px;color:var(--ink);
@@ -123,6 +138,7 @@
   .popup.sale .pill{background:rgba(166,75,42,.12);color:var(--clay);}
   .popup.rent .pill{background:rgba(95,120,86,.14);color:var(--sage);}
   .popup .status{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);}
+  .popup .deal-pill{margin-left:6px;}
 
   .marker-pin{
     width:30px;height:30px;border-radius:50% 50% 50% 0;
@@ -255,7 +271,7 @@ function popupHtml(l){
     <div class="addr">${l.address}</div>
     <div class="stats">${l.beds} bd · ${l.baths} ba · ${Number(l.sqft).toLocaleString()} sqft</div>
     <div class="meta">
-      <span class="pill">${l.type === 'sale' ? 'For sale' : 'For rent'}</span>
+      <span class="pill">${l.type === 'sale' ? 'For sale' : 'For rent'}</span>${l.deal ? `<span class="deal-pill">${l.deal}</span>` : ''}
       <span class="status">${l.status || ''}</span>
     </div>
     ${l.url ? `<a class="view-link" href="${l.url}" target="_blank" rel="noopener noreferrer">View full listing ↗</a>` : ''}
@@ -285,12 +301,12 @@ function render(){
     const card = document.createElement('div');
     card.className = `listing-card ${l.type}`;
     card.innerHTML = `
-      <div class="thumb" style="${l.photo ? `background-image:url('${l.photo}')` : ''}"></div>
+      <div class="thumb" style="${l.photo ? `background-image:url('${l.photo}')` : ''}">${l.deal ? `<div class="thumb-deal-badge">${l.deal}</div>` : ''}</div>
       <div class="info">
         <div class="price">${fmtPrice(l)}</div>
         <div class="addr">${l.address}</div>
         <div class="stats">${l.beds} bd · ${l.baths} ba · ${Number(l.sqft).toLocaleString()} sqft</div>
-        <span class="pill">${l.type === 'sale' ? 'For sale' : 'For rent'}</span>
+        <span class="pill">${l.type === 'sale' ? 'For sale' : 'For rent'}</span>${l.deal ? `<span class="deal-pill">${l.deal}</span>` : ''}
         ${hasCoords ? '' : '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:var(--muted);margin-top:6px;">Map location pending</div>'}
         ${l.url ? `<a class="view-link" href="${l.url}" target="_blank" rel="noopener noreferrer">View full listing ↗</a>` : ''}
       </div>`;

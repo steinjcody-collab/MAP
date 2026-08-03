@@ -208,7 +208,13 @@ if(typeof L === 'undefined'){
   throw new Error('Leaflet failed to load from CDN');
 }
 
-const map = L.map('map', { zoomControl: true }).setView([33.6, -112.0], 9);
+// maxZoom is set here on the map itself (not just on the tile layer below)
+// because Leaflet.markercluster needs a defined max zoom the moment it's
+// added to the map — which happens before the tile layer (and its own
+// maxZoom) is added. Without this, it throws "Map has no maxZoom
+// specified" and the whole script stops before listings.json is even
+// fetched, leaving a blank page.
+const map = L.map('map', { zoomControl: true, maxZoom: 19 }).setView([33.6, -112.0], 9);
 
 // Groups pins into a single numbered circle when they're close together at
 // the current zoom level, and automatically splits them apart again once

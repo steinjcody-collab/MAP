@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-03T10:02:19Z",
+  "updated": "2026-08-03T10:06:32Z",
   "listings": [
     {
       "address": "3425 W Picket Line, Flagstaff, AZ",
@@ -49,7 +49,7 @@
       "beds": 2,
       "baths": 2,
       "sqft": 1100,
-      "status": "Active,",
+      "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/6089802205-977613032/9040-e-winchcomb-dr-scottsdale-az-primaryphoto.jpg",
       "url": "",
@@ -126,6 +126,34 @@
       "deal": "",
       "lat": 33.404642436173,
       "lng": -111.927889379256
+    },
+    {
+      "address": "6502 E Grandview Dr, Scottsdale, AZ",
+      "price": 3200,
+      "beds": 4,
+      "baths": 2,
+      "sqft": 1522,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://images.homes.com/listings/102/2419615405-712618132/6502-e-grandview-dr-scottsdale-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/6502-e-grandview-dr-scottsdale-az/vtjf9jpmtrgbz/",
+      "deal": "",
+      "lat": 33.636072967542,
+      "lng": -111.940218214961
+    },
+    {
+      "address": "1222 W 4th St Unit 2, Tempe, AZ",
+      "price": 1650,
+      "beds": 2,
+      "baths": 1,
+      "sqft": 2256,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://images.homes.com/listings/102/8226025405-288718132/1222-w-4th-st-tempe-az-unit-2-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/1222-w-4th-st-tempe-az-unit-2/8v0pqgqqnvle4/",
+      "deal": "",
+      "lat": 33.426513398694,
+      "lng": -111.957184555482
     }
   ]
 }

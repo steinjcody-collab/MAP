@@ -299,6 +299,7 @@ def main():
             "type": row.get("type", "sale").strip().lower(),
             "photo": row.get("photo", "").strip(),
             "url": row.get("url", "").strip(),
+            "deal": row.get("deal", "").strip(),
             "lat": lat,
             "lng": lng,
         })

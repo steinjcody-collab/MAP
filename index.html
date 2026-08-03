@@ -182,6 +182,14 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
   maxZoom: 19
 }).addTo(map);
 
+// Leaflet sizes itself at creation time, which can happen before mobile
+// CSS (e.g. the #map height set in the @media rule) has fully applied —
+// especially on phones, where this often shows up as a blank/grey map.
+// Re-checking the size after load and on resize/orientation change fixes it.
+setTimeout(() => map.invalidateSize(), 200);
+window.addEventListener('resize', () => map.invalidateSize());
+window.addEventListener('orientationchange', () => setTimeout(() => map.invalidateSize(), 200));
+
 let ALL_LISTINGS = [];
 let activeFilter = 'all';
 let markers = [];

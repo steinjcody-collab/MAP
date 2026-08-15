@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-15T16:47:25Z",
+  "updated": "2026-08-15T17:07:47Z",
   "listings": [
     {
       "address": "3425 W Picket Line, Flagstaff, AZ",
@@ -87,7 +87,7 @@
     },
     {
       "address": "2310 W Spur Dr, Phoenix, AZ",
-      "price": 3250.0,
+      "price": 2650,
       "beds": 4,
       "baths": 2,
       "sqft": 2297,
@@ -101,7 +101,7 @@
     },
     {
       "address": "3173 W Peak View Rd, Phoenix, AZ",
-      "price": 4250.0,
+      "price": 3900,
       "beds": 4,
       "baths": 3,
       "sqft": 2649,

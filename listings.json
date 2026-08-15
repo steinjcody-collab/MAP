@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-15T13:54:28Z",
+  "updated": "2026-08-15T16:47:25Z",
   "listings": [
     {
       "address": "3425 W Picket Line, Flagstaff, AZ",
@@ -17,7 +17,7 @@
     },
     {
       "address": "1229 W 4th St Unit 3, Tempe, AZ",
-      "price": 1825.0,
+      "price": 1725.0,
       "beds": 2,
       "baths": 1,
       "sqft": 825,
@@ -31,7 +31,7 @@
     },
     {
       "address": "1234 W 4th St Unit 2, Tempe, AZ",
-      "price": 1150.0,
+      "price": 1050.0,
       "beds": 1,
       "baths": 1,
       "sqft": 300,
@@ -45,7 +45,7 @@
     },
     {
       "address": "9040 E Winchcomb Dr, Scottsdale, AZ",
-      "price": 2995.0,
+      "price": 2900.0,
       "beds": 2,
       "baths": 2,
       "sqft": 1100,
@@ -59,7 +59,7 @@
     },
     {
       "address": "4701 N 68th St Unit 111, Scottsdale, AZ",
-      "price": 2300.0,
+      "price": 2200.0,
       "beds": 2,
       "baths": 1.5,
       "sqft": 1039,
@@ -115,7 +115,7 @@
     },
     {
       "address": "2209 S Granada Dr Unit C, Tempe, AZ",
-      "price": 1250.0,
+      "price": 1200.0,
       "beds": 1,
       "baths": 1,
       "sqft": 650,
@@ -143,10 +143,10 @@
     },
     {
       "address": "1222 W 4th St Unit 2, Tempe, AZ",
-      "price": 1650,
+      "price": 1600,
       "beds": 2,
       "baths": 1,
-      "sqft": 2256,
+      "sqft": 800,
       "status": "Active",
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/8226025405-288718132/1222-w-4th-st-tempe-az-unit-2-primaryphoto.jpg",

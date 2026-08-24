@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T15:11:40Z",
+  "updated": "2026-08-24T20:54:01Z",
   "listings": [
     {
       "address": "3425 W Picket Line, Flagstaff, AZ",
@@ -28,20 +28,6 @@
       "deal": "$500 off",
       "lat": 33.426399336763,
       "lng": -111.957311175535
-    },
-    {
-      "address": "1234 W 4th St Unit 2, Tempe, AZ",
-      "price": 1050.0,
-      "beds": 1,
-      "baths": 1,
-      "sqft": 300,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/5477885205-408267032/1234-w-4th-st-tempe-az-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/1234-w-4th-st-tempe-az-unit-2/216rf5ymv7y74/",
-      "deal": "$500 off",
-      "lat": 33.426514454727,
-      "lng": -111.957436416019
     },
     {
       "address": "9040 E Winchcomb Dr, Scottsdale, AZ",
@@ -129,7 +115,7 @@
     },
     {
       "address": "6502 E Grandview Dr, Scottsdale, AZ",
-      "price": 3200,
+      "price": 3100,
       "beds": 4,
       "baths": 2,
       "sqft": 1522,
@@ -154,6 +140,34 @@
       "deal": "$500 off",
       "lat": 33.426513398694,
       "lng": -111.957184555482
+    },
+    {
+      "address": "3708 E Kerry Ln Phoenix Az",
+      "price": 3100,
+      "beds": 3,
+      "baths": 3,
+      "sqft": 1813,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://cdn.resize.sparkplatform.com/az/2048x1600/true/20260720215758245704000000-o.jpg",
+      "url": "",
+      "deal": "",
+      "lat": 33.661074635952,
+      "lng": -112.002394336934
+    },
+    {
+      "address": "3",
+      "price": 0,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "status": "",
+      "type": "",
+      "photo": "",
+      "url": "",
+      "deal": "",
+      "lat": 39.553048,
+      "lng": -91.158606
     }
   ]
 }

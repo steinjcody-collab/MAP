@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T20:54:01Z",
+  "updated": "2026-08-24T21:41:31Z",
   "listings": [
     {
       "address": "3425 W Picket Line, Flagstaff, AZ",
@@ -154,6 +154,20 @@
       "deal": "",
       "lat": 33.661074635952,
       "lng": -112.002394336934
+    },
+    {
+      "address": "803 N Park Ave, Casa Grande, AZ",
+      "price": 1300,
+      "beds": 2,
+      "baths": 1,
+      "sqft": 850,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://cdn.resize.sparkplatform.com/az/1600x1200/true/20260822194139873442000000-o.jpg",
+      "url": "https://www.zillow.com/homedetails/803-N-Park-Ave-Casa-Grande-AZ-85122/461812269_zpid/?view=public",
+      "deal": "",
+      "lat": 32.880675967627,
+      "lng": -111.754846144269
     },
     {
       "address": "3",

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-26T16:36:32Z",
+  "updated": "2026-08-27T23:29:52Z",
   "listings": [
     {
       "address": "3425 W Picket Line, Flagstaff, AZ",
@@ -28,20 +28,6 @@
       "deal": "$500 off",
       "lat": 33.426399336763,
       "lng": -111.957311175535
-    },
-    {
-      "address": "9040 E Winchcomb Dr, Scottsdale, AZ",
-      "price": 2900.0,
-      "beds": 2,
-      "baths": 2,
-      "sqft": 1100,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/6089802205-977613032/9040-e-winchcomb-dr-scottsdale-az-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/9040-e-winchcomb-dr-scottsdale-az/d1b6vzfehl92c/",
-      "deal": "",
-      "lat": 33.6434,
-      "lng": -111.8901
     },
     {
       "address": "4701 N 68th St Unit 111, Scottsdale, AZ",
@@ -100,20 +86,6 @@
       "lng": -112.1271217
     },
     {
-      "address": "2209 S Granada Dr Unit C, Tempe, AZ",
-      "price": 1200.0,
-      "beds": 1,
-      "baths": 1,
-      "sqft": 650,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/9309100105-075691522/2209-s-granada-dr-tempe-az-unit-c-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/2209-s-granada-dr-tempe-az-unit-c/w1ycsfqfc492g/",
-      "deal": "$500 off",
-      "lat": 33.404642436173,
-      "lng": -111.927889379256
-    },
-    {
       "address": "6502 E Grandview Dr, Scottsdale, AZ",
       "price": 3100,
       "beds": 4,
@@ -140,20 +112,6 @@
       "deal": "$500 off",
       "lat": 33.426513398694,
       "lng": -111.957184555482
-    },
-    {
-      "address": "3708 E Kerry Ln Phoenix Az",
-      "price": 3100,
-      "beds": 3,
-      "baths": 3,
-      "sqft": 1813,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://cdn.resize.sparkplatform.com/az/2048x1600/true/20260720215758245704000000-o.jpg",
-      "url": "",
-      "deal": "",
-      "lat": 33.661074635952,
-      "lng": -112.002394336934
     },
     {
       "address": "803 N Park Ave, Casa Grande, AZ",

@@ -241,23 +241,39 @@ def fetch_csv_rows(url):
  
  
 def load_existing_coords():
-    """Reuse lat/lng already stored in either output file so we don't
-    re-geocode an address we've already resolved on a previous run — including
-    ones that have since moved from listings.json to completed-listings.json
-    (or vice versa) as their status changed."""
+    """Reuse lat/lng already stored in listings.json so we don't re-geocode
+    an address we've already resolved on a previous run. Only listings.json
+    is checked — completed-listings.json intentionally never stores the raw
+    address (see main()), so there's nothing to key a cache off there;
+    completed rentals get re-geocoded fresh each run instead, which is fine
+    since the Census lookup is free and instant."""
+    if not os.path.exists(LISTINGS_PATH):
+        return {}
+    try:
+        with open(LISTINGS_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {}
     coords = {}
-    for path in (LISTINGS_PATH, COMPLETED_PATH):
-        if not os.path.exists(path):
-            continue
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except (json.JSONDecodeError, OSError):
-            continue
-        for l in data.get("listings", []):
-            if l.get("lat") is not None and l.get("lng") is not None:
-                coords[l["address"].strip().lower()] = (l["lat"], l["lng"])
+    for l in data.get("listings", []):
+        addr = l.get("address")
+        if addr and l.get("lat") is not None and l.get("lng") is not None:
+            coords[addr.strip().lower()] = (l["lat"], l["lng"])
     return coords
+
+
+def public_city_state(address):
+    """Derive a public-safe location label ('Scottsdale, AZ') from a full
+    'Street, City, State Zip' address, dropping the street and zip. Used on
+    the completed-rentals page so a past tenant's exact address is never
+    published — the map pin still lands on the real spot, but nothing on
+    the page states the street address in text."""
+    parts = [p.strip() for p in address.split(",") if p.strip()]
+    if len(parts) < 2:
+        return ""
+    city = parts[1]
+    state = parts[2].split()[0] if len(parts) > 2 and parts[2].split() else ""
+    return f"{city}, {state}" if state else city
  
  
 def to_number(value, default=0):
@@ -303,11 +319,15 @@ def main():
         status = row.get("status", "Active").strip()
         listing_type = row.get("type", "sale").strip().lower()
         is_completed = status.lower().startswith("complet")
- 
-        if key in existing_coords:
-            lat, lng = existing_coords[key]
-        else:
-            print(f"Geocoding: {address}")
+
+        if is_completed and listing_type == "rent":
+            # Completed rentals are geocoded fresh every run rather than via
+            # the address-keyed cache above — that cache lives in
+            # listings.json, and the whole point here is that this address
+            # must never be written to a file the public can fetch. The
+            # Census lookup is free with no rate limit, so re-resolving the
+            # same ~50 addresses daily costs nothing meaningful.
+            print(f"Geocoding (completed): {address}")
             result = geocode(address)
             if result is None:
                 print(f"  no match, skipping coordinates for '{address}'", file=sys.stderr)
@@ -315,13 +335,14 @@ def main():
             else:
                 lat, lng = result
                 newly_geocoded += 1
- 
-        if is_completed and listing_type == "rent":
+
             # Goes to the completed-rentals page instead of the active map.
-            # Price/status/url/deal don't matter once it's a past rental —
-            # keep the fields that page actually displays.
+            # Deliberately no "address" field — a past tenant's exact street
+            # address should never end up in a public JSON file. The pin
+            # still lands on the precise geocoded spot; only the on-page
+            # text is generalized to city/state.
             completed_listings.append({
-                "address": address,
+                "city": public_city_state(address),
                 "beds": to_number(row.get("beds", 0)),
                 "baths": to_number(row.get("baths", 0)),
                 "sqft": to_number(row.get("sqft", 0)),
@@ -336,6 +357,18 @@ def main():
             # A completed SALE isn't a rental and isn't "active" either —
             # it just drops off the map entirely (nothing to do here).
             continue
+
+        if key in existing_coords:
+            lat, lng = existing_coords[key]
+        else:
+            print(f"Geocoding: {address}")
+            result = geocode(address)
+            if result is None:
+                print(f"  no match, skipping coordinates for '{address}'", file=sys.stderr)
+                lat, lng = None, None
+            else:
+                lat, lng = result
+                newly_geocoded += 1
 
         active_listings.append({
             "address": address,

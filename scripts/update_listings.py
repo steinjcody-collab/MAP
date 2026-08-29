@@ -260,6 +260,17 @@ def to_number(value, default=0):
         return float(cleaned) if "." in cleaned else int(cleaned)
     except (ValueError, TypeError):
         return default
+
+
+def get_field(row, name, default=""):
+    """Look up a CSV column by name without caring about capitalization —
+    Google Sheets headers are easy to type as 'Deal' vs 'deal', and
+    csv.DictReader matches column names exactly, so a mismatch here
+    otherwise fails silently (the field just comes back empty)."""
+    for key, value in row.items():
+        if key and key.strip().lower() == name.lower():
+            return str(value).strip()
+    return default
  
  
 def main():
@@ -299,7 +310,7 @@ def main():
             "type": row.get("type", "sale").strip().lower(),
             "photo": row.get("photo", "").strip(),
             "url": row.get("url", "").strip(),
-            "deal": row.get("deal", "").strip(),
+            "deal": get_field(row, "deal", ""),
             "lat": lat,
             "lng": lng,
         })

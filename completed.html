@@ -230,8 +230,7 @@ function popupHtml(l){
   const stats = statsLine(l);
   return `<div class="popup">
     ${img}
-    <div class="addr">${l.address}</div>
-    ${l.city ? `<div class="city">${l.city}</div>` : ''}
+    <div class="addr">${l.city || 'Location on file'}</div>
     ${stats ? `<div class="stats">${stats}</div>` : ''}
     <span class="pill">✓ Rented${l.yearCompleted ? ' · ' + l.yearCompleted : ''}</span>
   </div>`;
@@ -247,8 +246,9 @@ function render(listings){
     listEl.innerHTML = `<div class="empty-state">
       <div class="headline">No completed rentals added yet</div>
       Add entries to <code>completed-listings.json</code> — each needs at least
-      an <code>address</code>, <code>lat</code>/<code>lng</code>, and ideally a
-      <code>photo</code> URL.
+      <code>lat</code>/<code>lng</code>, and ideally a <code>city</code> label
+      and a <code>photo</code> URL. The exact street address is intentionally
+      never stored here.
     </div>`;
     return;
   }
@@ -271,8 +271,7 @@ function render(listings){
     card.innerHTML = `
       <div class="thumb" style="${l.photo ? `background-image:url('${l.photo}')` : ''}"></div>
       <div class="info">
-        <div class="addr">${l.address}</div>
-        ${l.city ? `<div class="city">${l.city}</div>` : ''}
+        <div class="addr">${l.city || 'Location on file'}</div>
         ${stats ? `<div class="stats">${stats}</div>` : ''}
         <span class="pill">✓ Rented${l.yearCompleted ? ' · ' + l.yearCompleted : ''}</span>
       </div>`;

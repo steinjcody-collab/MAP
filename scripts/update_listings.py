@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 """
 Pulls listing rows from a published Google Sheet (CSV export), geocodes any
-address that doesn't already have coordinates, and writes listings.json at
-the repo root. Designed to run once a day via GitHub Actions.
- 
+address that doesn't already have coordinates, and writes TWO files at the
+repo root: listings.json (active for-sale/for-rent listings) and
+completed-listings.json (rentals you've marked as filled). Designed to run
+once a day via GitHub Actions.
+
+To move a property from the live map to the completed-rentals page, just
+set that row's `status` column to "Completed" in the sheet — no code
+changes, no separate sheet. Only rent-type rows marked Completed go to the
+completed-rentals page; a sale marked Completed just drops off the active
+map (it isn't a rental, so it doesn't belong on either page's list).
+
 Data source: a Google Sheet you maintain, published to the web as CSV
 (File > Share > Publish to web > select the sheet > CSV). That URL goes in
 SHEET_CSV_URL below (or the SHEET_CSV_URL repo variable/secret — see README).
@@ -27,6 +35,7 @@ import urllib.parse
  
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LISTINGS_PATH = os.path.join(REPO_ROOT, "listings.json")
+COMPLETED_PATH = os.path.join(REPO_ROOT, "completed-listings.json")
  
 # Falls back to the env var / repo variable SHEET_CSV_URL if set, so the
 # actual sheet URL doesn't have to live in source control.
@@ -232,19 +241,22 @@ def fetch_csv_rows(url):
  
  
 def load_existing_coords():
-    """Reuse lat/lng already stored in listings.json so we don't re-geocode
-    addresses we've already resolved on a previous run."""
-    if not os.path.exists(LISTINGS_PATH):
-        return {}
-    try:
-        with open(LISTINGS_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    except (json.JSONDecodeError, OSError):
-        return {}
+    """Reuse lat/lng already stored in either output file so we don't
+    re-geocode an address we've already resolved on a previous run — including
+    ones that have since moved from listings.json to completed-listings.json
+    (or vice versa) as their status changed."""
     coords = {}
-    for l in data.get("listings", []):
-        if l.get("lat") is not None and l.get("lng") is not None:
-            coords[l["address"].strip().lower()] = (l["lat"], l["lng"])
+    for path in (LISTINGS_PATH, COMPLETED_PATH):
+        if not os.path.exists(path):
+            continue
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except (json.JSONDecodeError, OSError):
+            continue
+        for l in data.get("listings", []):
+            if l.get("lat") is not None and l.get("lng") is not None:
+                coords[l["address"].strip().lower()] = (l["lat"], l["lng"])
     return coords
  
  
@@ -281,12 +293,16 @@ def main():
     rows = fetch_csv_rows(SHEET_CSV_URL)
     existing_coords = load_existing_coords()
  
-    listings = []
+    active_listings = []
+    completed_listings = []
     newly_geocoded = 0
  
     for row in rows:
         address = row["address"].strip().strip(",").strip()
         key = address.lower()
+        status = row.get("status", "Active").strip()
+        listing_type = row.get("type", "sale").strip().lower()
+        is_completed = status.lower().startswith("complet")
  
         if key in existing_coords:
             lat, lng = existing_coords[key]
@@ -300,14 +316,35 @@ def main():
                 lat, lng = result
                 newly_geocoded += 1
  
-        listings.append({
+        if is_completed and listing_type == "rent":
+            # Goes to the completed-rentals page instead of the active map.
+            # Price/status/url/deal don't matter once it's a past rental —
+            # keep the fields that page actually displays.
+            completed_listings.append({
+                "address": address,
+                "beds": to_number(row.get("beds", 0)),
+                "baths": to_number(row.get("baths", 0)),
+                "sqft": to_number(row.get("sqft", 0)),
+                "photo": row.get("photo", "").strip(),
+                "yearCompleted": get_field(row, "yearcompleted", ""),
+                "lat": lat,
+                "lng": lng,
+            })
+            continue
+
+        if is_completed:
+            # A completed SALE isn't a rental and isn't "active" either —
+            # it just drops off the map entirely (nothing to do here).
+            continue
+
+        active_listings.append({
             "address": address,
             "price": to_number(row.get("price", 0)),
             "beds": to_number(row.get("beds", 0)),
             "baths": to_number(row.get("baths", 0)),
             "sqft": to_number(row.get("sqft", 0)),
-            "status": row.get("status", "Active").strip(),
-            "type": row.get("type", "sale").strip().lower(),
+            "status": status,
+            "type": listing_type,
             "photo": row.get("photo", "").strip(),
             "url": row.get("url", "").strip(),
             "deal": get_field(row, "deal", ""),
@@ -315,16 +352,19 @@ def main():
             "lng": lng,
         })
  
-    output = {
-        "updated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "listings": listings,
-    }
+    now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
  
     with open(LISTINGS_PATH, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2)
+        json.dump({"updated": now, "listings": active_listings}, f, indent=2)
         f.write("\n")
  
-    print(f"Wrote {len(listings)} listings ({newly_geocoded} newly geocoded) to listings.json")
+    with open(COMPLETED_PATH, "w", encoding="utf-8") as f:
+        json.dump({"updated": now, "listings": completed_listings}, f, indent=2)
+        f.write("\n")
+ 
+    print(f"Wrote {len(active_listings)} active listings to listings.json")
+    print(f"Wrote {len(completed_listings)} completed rentals to completed-listings.json")
+    print(f"({newly_geocoded} addresses newly geocoded this run)")
  
  
 if __name__ == "__main__":

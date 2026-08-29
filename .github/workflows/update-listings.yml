@@ -25,11 +25,11 @@ jobs:
           SHEET_CSV_URL: ${{ secrets.SHEET_CSV_URL }}
         run: python scripts/update_listings.py
 
-      - name: Commit updated listings.json
+      - name: Commit updated listings.json and completed-listings.json
         run: |
           git config user.name "listings-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add listings.json
+          git add listings.json completed-listings.json
           git diff --cached --quiet && echo "No changes" || git commit -m "Update listings ($(date -u +'%Y-%m-%d'))"
           for i in 1 2 3 4 5; do
             git push && exit 0

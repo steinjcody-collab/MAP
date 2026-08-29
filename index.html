@@ -263,28 +263,41 @@ if (typeof L.markerClusterGroup === 'function') {
 }
 map.addLayer(clusterGroup);
 
-const primaryTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-  maxZoom: 19
+// CARTO's free raster basemaps (basemaps.cartocdn.com) started requiring an
+// API key as of Aug 2026 and now stamp an "API KEY REQUIRED" watermark over
+// every tile when no key is present, rather than failing to load. Esri's
+// Light Gray Canvas is the closest keyless equivalent to CARTO Voyager's
+// muted look, so it replaces CARTO here rather than needing a signup step.
+const primaryTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+  maxZoom: 16
+}).addTo(map);
+const primaryLabels = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+  maxZoom: 16
 }).addTo(map);
 
 // Some mobile networks/browsers block or throttle third-party CDN tile
-// requests (cartocdn.com) in ways desktop doesn't hit. If enough tiles
-// fail to load shortly after the map opens, fall back to OpenStreetMap's
-// own tile server, which is more consistently reachable everywhere.
+// requests in ways desktop doesn't hit. If enough tiles fail to load
+// shortly after the map opens, fall back to OpenStreetMap's own tile
+// server, which is more consistently reachable everywhere. (This only
+// catches genuine load failures — it would not have caught the CARTO
+// watermark above, since that tile "succeeds" and just renders a notice.)
 let tileErrorCount = 0;
 let fallbackApplied = false;
-primaryTiles.on('tileerror', () => {
+function handlePrimaryTileError(){
   tileErrorCount++;
   if(tileErrorCount >= 3 && !fallbackApplied){
     fallbackApplied = true;
     map.removeLayer(primaryTiles);
+    map.removeLayer(primaryLabels);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors',
       maxZoom: 19
     }).addTo(map);
   }
-});
+}
+primaryTiles.on('tileerror', handlePrimaryTileError);
+primaryLabels.on('tileerror', handlePrimaryTileError);
 
 // Leaflet sizes itself at creation time, which can happen before mobile
 // CSS (e.g. the #map height set in the @media rule) has fully applied —

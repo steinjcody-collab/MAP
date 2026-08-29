@@ -1,8 +1,8 @@
 {
-  "updated": "2026-08-29T20:54:31Z",
+  "updated": "2026-08-29T21:08:31Z",
   "listings": [
     {
-      "address": "3220 N 66th St, Scottsdale, AZ 85251",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -12,7 +12,7 @@
       "lng": -111.938597202286
     },
     {
-      "address": "2310 W Spur Dr, Phoenix, AZ 85085",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -22,7 +22,7 @@
       "lng": -112.108328154621
     },
     {
-      "address": "3173 W Peak View Rd, Phoenix, AZ 85083",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -32,7 +32,7 @@
       "lng": -112.127823330685
     },
     {
-      "address": "2214 S Granada Dr #A, Tempe, AZ 85282",
+      "city": "Tempe, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -42,7 +42,7 @@
       "lng": -111.92802664704
     },
     {
-      "address": "8240 E Monterosa St, Scottsdale, AZ 85251",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -52,7 +52,7 @@
       "lng": -111.903667792488
     },
     {
-      "address": "6144 W Freeway Ln, Glendale, AZ 85302",
+      "city": "Glendale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -62,7 +62,7 @@
       "lng": -112.192692364817
     },
     {
-      "address": "1438 N Shill Dr, Mesa, AZ 85201",
+      "city": "Mesa, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -72,7 +72,7 @@
       "lng": -111.830538216542
     },
     {
-      "address": "805 N Park Ave #803, Casa Grande, AZ 85122",
+      "city": "Casa Grande, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -82,7 +82,7 @@
       "lng": -111.754844973515
     },
     {
-      "address": "3220 N 68th St #1010, Scottsdale, AZ 85251",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -92,7 +92,7 @@
       "lng": -111.934807416646
     },
     {
-      "address": "9040 E Winchcomb Dr, Scottsdale, AZ 85260",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -102,7 +102,7 @@
       "lng": -111.886073924838
     },
     {
-      "address": "1234 W 4th St #2, Tempe, AZ 85281",
+      "city": "Tempe, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -112,7 +112,7 @@
       "lng": -111.957436416019
     },
     {
-      "address": "3708 E Kerry Ln, Phoenix, AZ 85050",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -122,7 +122,7 @@
       "lng": -112.002394336934
     },
     {
-      "address": "902 W Hazelwood St #B, Phoenix, AZ 85013",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -132,7 +132,7 @@
       "lng": -112.085326657082
     },
     {
-      "address": "2209 S Granada Dr, Tempe, AZ 85282",
+      "city": "Tempe, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -142,7 +142,7 @@
       "lng": -111.927889379256
     },
     {
-      "address": "8626 E Roanoke Ave, Scottsdale, AZ 85257",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -152,7 +152,7 @@
       "lng": -111.895184505343
     },
     {
-      "address": "4701 N 68th St #135, Scottsdale, AZ 85251",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -162,7 +162,7 @@
       "lng": -111.934616636341
     },
     {
-      "address": "3313 N 66th St #5, Scottsdale, AZ 85251",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -172,7 +172,7 @@
       "lng": -111.93845212625
     },
     {
-      "address": "35360 N 93rd Way, Scottsdale, AZ 85262",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -182,7 +182,7 @@
       "lng": -111.879388804505
     },
     {
-      "address": "8801 W Palmaire Ave, Glendale, AZ 85303",
+      "city": "Glendale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -192,7 +192,7 @@
       "lng": -112.247687202197
     },
     {
-      "address": "15964 W Watkins St, Goodyear, AZ 85338",
+      "city": "Goodyear, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -202,7 +202,7 @@
       "lng": -112.402672681922
     },
     {
-      "address": "1201 W Vogel Ave, Phoenix, AZ 85021",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -212,7 +212,7 @@
       "lng": -112.088033236674
     },
     {
-      "address": "3908 W Rose Garden Ln, Glendale, AZ 85308",
+      "city": "Glendale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -222,7 +222,7 @@
       "lng": -112.145182136822
     },
     {
-      "address": "3612 N 72nd Dr, Phoenix, AZ 85033",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -232,7 +232,7 @@
       "lng": -112.214570626245
     },
     {
-      "address": "1232 W 4th St #3, Tempe, AZ 85281",
+      "city": "Tempe, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -242,7 +242,7 @@
       "lng": -111.957394439263
     },
     {
-      "address": "3220 N 66th St, Scottsdale, AZ 85251",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -252,7 +252,7 @@
       "lng": -111.938597202286
     },
     {
-      "address": "7819 E Loma Land Dr, Scottsdale, AZ 85257",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -262,7 +262,7 @@
       "lng": -111.912870222995
     },
     {
-      "address": "9075 W Nicolet Ave, Glendale, AZ 85305",
+      "city": "Glendale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -272,7 +272,7 @@
       "lng": -112.254000221423
     },
     {
-      "address": "8631 E Thomas Rd, Scottsdale, AZ 85251",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -282,7 +282,7 @@
       "lng": -111.894921712006
     },
     {
-      "address": "8022 S Calle Azteca, Guadalupe, AZ 85283",
+      "city": "Guadalupe, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -292,7 +292,7 @@
       "lng": -111.964965646365
     },
     {
-      "address": "10232 N 12th Ct, Phoenix, AZ 85020",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -302,7 +302,7 @@
       "lng": -112.056593197995
     },
     {
-      "address": "902 W Hazelwood St, Phoenix, AZ 85013",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -312,7 +312,7 @@
       "lng": -112.085326657082
     },
     {
-      "address": "1500 N Markdale St #5, Mesa, AZ 85201",
+      "city": "Mesa, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -322,7 +322,7 @@
       "lng": null
     },
     {
-      "address": "8240 E Monterosa St, Scottsdale, AZ 85251",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -332,7 +332,7 @@
       "lng": -111.903667792488
     },
     {
-      "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -342,7 +342,7 @@
       "lng": -112.053027677418
     },
     {
-      "address": "1101 E Balboa Dr, Tempe, AZ 85282",
+      "city": "Tempe, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -352,7 +352,7 @@
       "lng": -111.92192241254
     },
     {
-      "address": "1238 W 4th St, Tempe, AZ 85281",
+      "city": "Tempe, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -362,7 +362,7 @@
       "lng": -111.957520369531
     },
     {
-      "address": "1246 W 4th St, Tempe, AZ 85281",
+      "city": "Tempe, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -372,7 +372,7 @@
       "lng": -111.957688276556
     },
     {
-      "address": "17259 E Woolsey Way, Rio Verde, AZ 85263",
+      "city": "Rio Verde, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -382,7 +382,7 @@
       "lng": -111.706919258156
     },
     {
-      "address": "305 E Southern Ave #3, Phoenix, AZ 85040",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -392,7 +392,7 @@
       "lng": -112.0700142122
     },
     {
-      "address": "4710 W Via Cynthia, Glendale, AZ 85301",
+      "city": "Glendale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -402,7 +402,7 @@
       "lng": -112.160398532209
     },
     {
-      "address": "6437 W College Dr, Phoenix, AZ 85033",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -412,7 +412,7 @@
       "lng": -112.198624837688
     },
     {
-      "address": "8155 E Roosevelt St #128, Scottsdale, AZ 85257",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -422,7 +422,7 @@
       "lng": -111.905788816666
     },
     {
-      "address": "9620 W Trumbull Rd, Tolleson, AZ 85353",
+      "city": "Tolleson, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -432,7 +432,7 @@
       "lng": -112.266798801685
     },
     {
-      "address": "668 N 110th Dr, Avondale, AZ 85323",
+      "city": "Avondale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -442,7 +442,7 @@
       "lng": -112.297877094453
     },
     {
-      "address": "15873 W Adams St, Goodyear, AZ 85338",
+      "city": "Goodyear, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -452,7 +452,7 @@
       "lng": -112.400328300835
     },
     {
-      "address": "7640 E Minnezona Ave, Scottsdale, AZ 85251",
+      "city": "Scottsdale, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -462,7 +462,7 @@
       "lng": -111.916737428151
     },
     {
-      "address": "620 E Broadway Ln, Tempe, AZ 85282",
+      "city": "Tempe, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -472,7 +472,7 @@
       "lng": -111.928544279246
     },
     {
-      "address": "1607 W Shangri La Rd, Phoenix, AZ 85029",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -482,7 +482,7 @@
       "lng": -112.093527475029
     },
     {
-      "address": "5633 S Spinnaker Rd, Tempe, AZ 85283",
+      "city": "Tempe, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -492,7 +492,7 @@
       "lng": -111.915238465132
     },
     {
-      "address": "3131 W Baseline Rd, Laveen, AZ 85339",
+      "city": "Laveen, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -502,7 +502,7 @@
       "lng": -112.1275638
     },
     {
-      "address": "1120 N Gila Dr, Payson, AZ 85541",
+      "city": "Payson, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,
@@ -512,7 +512,7 @@
       "lng": -111.316373513222
     },
     {
-      "address": "4316 E Rose Marie Ln, Phoenix, AZ 85032",
+      "city": "Phoenix, AZ",
       "beds": 0,
       "baths": 0,
       "sqft": 0,

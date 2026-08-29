@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T20:36:30Z",
+  "updated": "2026-08-29T20:38:06Z",
   "listings": [
     {
       "address": "3220 N 66th St",
@@ -440,6 +440,86 @@
       "yearCompleted": "",
       "lat": 33.4535399,
       "lng": -112.298019
+    },
+    {
+      "address": "15873 W Adams St",
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "photo": "https://photos.zillowstatic.com/fp/6dbd0d20133a9ec015fc881c4344a0e5-rentals_thumb_180_180.webp",
+      "yearCompleted": "",
+      "lat": 33.4475155,
+      "lng": -112.400402
+    },
+    {
+      "address": "7640 E Minnezona Ave",
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "photo": "https://photos.zillowstatic.com/fp/5a9729fa0080d0d9c43b1f60368a49fc-rentals_thumb_180_180.webp",
+      "yearCompleted": "",
+      "lat": 33.5038,
+      "lng": -111.9153
+    },
+    {
+      "address": "620 E Broadway Ln",
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "photo": "https://photos.zillowstatic.com/fp/90480903266e24e584e604786a8a3636-rentals_thumb_180_180.webp",
+      "yearCompleted": "",
+      "lat": 33.4077033,
+      "lng": -111.9285301
+    },
+    {
+      "address": "1607 W Shangri La Rd",
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "photo": "https://photos.zillowstatic.com/fp/16d4e2c1b7f2e75d30a0ce278631e605-rentals_thumb_180_180.webp",
+      "yearCompleted": "",
+      "lat": 33.5872224,
+      "lng": -112.0936828
+    },
+    {
+      "address": "5633 S Spinnaker Rd",
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "photo": "https://photos.zillowstatic.com/fp/3a5d007f367e8d2d5bc32bad9a3f2f14-rentals_thumb_180_180.webp",
+      "yearCompleted": "",
+      "lat": 33.371375,
+      "lng": -111.9150855
+    },
+    {
+      "address": "3131 W Baseline Rd",
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "photo": "https://photos.zillowstatic.com/fp/9bb63fc324be378b29757a6322349d9f-rentals_thumb_180_180.webp",
+      "yearCompleted": "",
+      "lat": 33.3769735,
+      "lng": -112.1275638
+    },
+    {
+      "address": "1120 N Gila Dr",
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "photo": "https://photos.zillowstatic.com/fp/8d835fc623e2666082d86dc9e611333a-rentals_thumb_180_180.webp",
+      "yearCompleted": "",
+      "lat": 32.7114531,
+      "lng": -103.1184259
+    },
+    {
+      "address": "4316 E Rose Marie Ln",
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "photo": "https://photos.zillowstatic.com/fp/319852da4750c569a2eee3e5f5095fe9-rentals_thumb_180_180.webp",
+      "yearCompleted": "",
+      "lat": 33.6530379,
+      "lng": -111.9886292
     }
   ]
 }

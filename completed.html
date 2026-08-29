@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cody Stein — Completed Rentals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root{
+    --ink:#23342E;
+    --sand:#F4EFE4;
+    --card:#FFFDF8;
+    --hairline:#D8CFBA;
+    --clay:#A64B2A;
+    --sage:#5F7856;
+    --muted:#7A7364;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;background:var(--sand);color:var(--ink);font-family:'Inter',sans-serif;}
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 28px;
+    border-bottom:1px solid var(--hairline);
+    background:var(--sand);
+    position:relative;
+    z-index:20;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .brand{display:flex;flex-direction:column;line-height:1.1;}
+  .brand .name{font-family:'Fraunces',serif;font-weight:600;font-size:22px;letter-spacing:-0.01em;}
+  .brand .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:2px;}
+
+  .count-badge{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--sage);
+    background:rgba(95,120,86,.12);
+    padding:6px 14px;
+    border-radius:999px;
+    letter-spacing:.02em;
+  }
+
+  .layout{display:flex;height:calc(100% - 72px);}
+  #list{
+    width:340px;
+    min-width:340px;
+    overflow-y:auto;
+    border-right:1px solid var(--hairline);
+    background:var(--card);
+  }
+  .listing-card{
+    display:flex;
+    gap:12px;
+    padding:14px 20px;
+    border-bottom:1px solid var(--hairline);
+    cursor:pointer;
+    transition:background .12s ease;
+  }
+  .listing-card:hover{background:var(--sand);}
+  .listing-card .thumb{
+    width:64px;height:64px;border-radius:8px;flex-shrink:0;
+    background-size:cover;background-position:center;
+    background-color:var(--hairline);
+    border:1px solid var(--hairline);
+  }
+  .listing-card .info{min-width:0;}
+  .listing-card .addr{
+    font-family:'Fraunces',serif;font-weight:600;font-size:15px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .listing-card .city{font-size:12.5px;color:var(--muted);margin-top:2px;}
+  .listing-card .stats{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:5px;letter-spacing:.02em;}
+  .listing-card .pill{
+    display:inline-flex;align-items:center;gap:4px;
+    font-family:'IBM Plex Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;
+    margin-top:6px;
+    background:rgba(95,120,86,.14);color:var(--sage);
+  }
+
+  #map{flex:1;}
+
+  .leaflet-popup-content-wrapper{
+    background:var(--card);border-radius:10px;
+  }
+  .popup{font-family:'Inter',sans-serif;width:220px;}
+  .popup img{width:100%;height:120px;object-fit:cover;border-radius:6px;margin-bottom:8px;background:var(--hairline);}
+  .popup .addr{font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--ink);}
+  .popup .city{font-size:12px;color:var(--muted);margin:2px 0 6px;}
+  .popup .stats{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);}
+  .popup .pill{
+    display:inline-flex;align-items:center;gap:4px;
+    font-family:'IBM Plex Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;
+    margin-top:8px;
+    background:rgba(95,120,86,.14);color:var(--sage);
+  }
+
+  .marker-pin{
+    width:30px;height:30px;border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    background:var(--sage);
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--card);
+    box-shadow:0 1px 3px rgba(0,0,0,.35);
+  }
+  .marker-pin svg{transform:rotate(45deg);width:14px;height:14px;}
+
+  .empty-state{
+    padding:40px 24px;
+    text-align:center;
+    color:var(--muted);
+  }
+  .empty-state .headline{
+    font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:var(--ink);margin-bottom:8px;
+  }
+  .empty-state code{
+    background:var(--sand);border:1px solid var(--hairline);border-radius:4px;
+    padding:1px 5px;font-family:'IBM Plex Mono',monospace;font-size:11px;
+  }
+
+  footer{
+    position:fixed;bottom:0;left:0;right:0;
+    padding:6px 16px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    color:var(--muted);
+    background:var(--sand);
+    border-top:1px solid var(--hairline);
+    z-index:20;
+    text-align:right;
+  }
+
+  @media (max-width: 760px){
+    .layout{flex-direction:column;height:auto;}
+    #list{width:100%;min-width:0;max-height:38vh;order:2;}
+    #map{height:52vh;order:1;}
+    header{padding:14px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="name">Cody Stein</span>
+    <span class="tag">Completed rentals</span>
+  </div>
+  <div class="count-badge" id="countBadge">0 properties rented</div>
+</header>
+
+<div class="layout">
+  <div id="list"></div>
+  <div id="map"></div>
+</div>
+
+<footer id="updated"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+if(typeof L === 'undefined'){
+  document.getElementById('map').innerHTML = '<div style="padding:20px;color:#7A7364;font-size:13px;">Map library failed to load — check your connection and refresh.</div>';
+  throw new Error('Leaflet failed to load from CDN');
+}
+
+const map = L.map('map', { zoomControl: true }).setView([33.6, -112.0], 9);
+
+// Esri Light Gray Canvas — keyless, no signup required. (CARTO's free raster
+// basemaps now require an API key and stamp a watermark without one — see
+// index.html for the same fix, applied here from the start.)
+const primaryTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+  maxZoom: 16
+}).addTo(map);
+const primaryLabels = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+  maxZoom: 16
+}).addTo(map);
+
+let tileErrorCount = 0;
+let fallbackApplied = false;
+function handlePrimaryTileError(){
+  tileErrorCount++;
+  if(tileErrorCount >= 3 && !fallbackApplied){
+    fallbackApplied = true;
+    map.removeLayer(primaryTiles);
+    map.removeLayer(primaryLabels);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 19
+    }).addTo(map);
+  }
+}
+primaryTiles.on('tileerror', handlePrimaryTileError);
+primaryLabels.on('tileerror', handlePrimaryTileError);
+
+setTimeout(() => map.invalidateSize(), 200);
+window.addEventListener('resize', () => map.invalidateSize());
+window.addEventListener('orientationchange', () => setTimeout(() => map.invalidateSize(), 200));
+
+const CHECK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+
+function makeIcon(){
+  return L.divIcon({
+    className: '',
+    html: `<div class="marker-pin">${CHECK_ICON}</div>`,
+    iconSize: [30,30],
+    iconAnchor: [15,28],
+    popupAnchor: [0,-26]
+  });
+}
+
+function statsLine(l){
+  const parts = [];
+  if(l.beds) parts.push(`${l.beds} bd`);
+  if(l.baths) parts.push(`${l.baths} ba`);
+  if(l.sqft) parts.push(`${Number(l.sqft).toLocaleString()} sqft`);
+  return parts.join(' · ');
+}
+
+function popupHtml(l){
+  const img = l.photo
+    ? `<img src="${l.photo}" alt="">`
+    : `<div style="width:100%;height:120px;border-radius:6px;margin-bottom:8px;background:var(--hairline);"></div>`;
+  const stats = statsLine(l);
+  return `<div class="popup">
+    ${img}
+    <div class="addr">${l.address}</div>
+    ${l.city ? `<div class="city">${l.city}</div>` : ''}
+    ${stats ? `<div class="stats">${stats}</div>` : ''}
+    <span class="pill">✓ Rented${l.yearCompleted ? ' · ' + l.yearCompleted : ''}</span>
+  </div>`;
+}
+
+function render(listings){
+  const listEl = document.getElementById('list');
+  const countBadge = document.getElementById('countBadge');
+  listEl.innerHTML = '';
+  countBadge.textContent = `${listings.length} ${listings.length === 1 ? 'property' : 'properties'} rented`;
+
+  if(listings.length === 0){
+    listEl.innerHTML = `<div class="empty-state">
+      <div class="headline">No completed rentals added yet</div>
+      Add entries to <code>completed-listings.json</code> — each needs at least
+      an <code>address</code>, <code>lat</code>/<code>lng</code>, and ideally a
+      <code>photo</code> URL.
+    </div>`;
+    return;
+  }
+
+  const bounds = [];
+  listings.forEach(l => {
+    const hasCoords = l.lat != null && l.lng != null;
+    let marker = null;
+
+    if(hasCoords){
+      bounds.push([l.lat, l.lng]);
+      marker = L.marker([l.lat, l.lng], { icon: makeIcon() })
+        .addTo(map)
+        .bindPopup(popupHtml(l));
+    }
+
+    const stats = statsLine(l);
+    const card = document.createElement('div');
+    card.className = 'listing-card';
+    card.innerHTML = `
+      <div class="thumb" style="${l.photo ? `background-image:url('${l.photo}')` : ''}"></div>
+      <div class="info">
+        <div class="addr">${l.address}</div>
+        ${l.city ? `<div class="city">${l.city}</div>` : ''}
+        ${stats ? `<div class="stats">${stats}</div>` : ''}
+        <span class="pill">✓ Rented${l.yearCompleted ? ' · ' + l.yearCompleted : ''}</span>
+      </div>`;
+    if(hasCoords){
+      card.addEventListener('click', () => {
+        map.setView([l.lat, l.lng], 15);
+        marker.openPopup();
+      });
+    } else {
+      card.style.cursor = 'default';
+    }
+    listEl.appendChild(card);
+  });
+
+  if(bounds.length){
+    map.fitBounds(bounds, { padding: [40,40], maxZoom: 14 });
+  }
+}
+
+fetch('completed-listings.json?_=' + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    if(data.updated){
+      const d = new Date(data.updated);
+      document.getElementById('updated').textContent = 'Updated ' + d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+    }
+    render(data.listings || []);
+  })
+  .catch(err => {
+    render([]);
+    console.error(err);
+  });
+</script>
+</body>
+</html>

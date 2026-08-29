@@ -4,9 +4,11 @@ A static map of active listings, hosted on GitHub Pages, that refreshes itself
 once a day from a Google Sheet you maintain.
 
 ```
-index.html                      the map site (reads listings.json)
-listings.json                   the data the site displays — rewritten daily
-scripts/update_listings.py      pulls the sheet, geocodes new addresses, writes listings.json
+index.html                      the active-listings map (reads listings.json)
+completed.html                  the completed-rentals map (reads completed-listings.json)
+listings.json                   active listings — rewritten daily
+completed-listings.json         completed rentals — rewritten daily, same run
+scripts/update_listings.py      pulls the sheet, geocodes new addresses, writes both JSON files
 .github/workflows/update-listings.yml   the daily cron job that runs the script
 ```
 
@@ -66,6 +68,21 @@ It will:
 Just edit the Google Sheet — add, remove, or change a row. The site catches
 up within a day (or immediately if you run the workflow manually). No need
 to touch any code.
+
+## Marking a rental as completed
+
+Change that row's `status` column to `Completed`. On the next run:
+
+- If `type` is `rent`, the row moves from the active map (`index.html`) to
+  the completed-rentals map (`completed.html`) automatically.
+- If `type` is `sale`, the row just drops off the active map — a sale isn't
+  a rental, so it doesn't appear on the completed-rentals page either.
+
+An optional `yearCompleted` column (e.g. `2025`) will show up on the
+completed-rentals page if you add it to the sheet; it's not required.
+
+No second sheet, no separate data source — same sheet, same script, same
+daily run.
 
 ## Local preview
 

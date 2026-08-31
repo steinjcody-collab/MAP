@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-31T04:39:54Z",
+  "updated": "2026-08-31T13:02:25Z",
   "listings": [
     {
       "city": "Tempe, AZ",
@@ -18,8 +18,8 @@
       "sqft": 0,
       "photo": "https://images.homes.com/listings/102/2114852684-099445812/3220-n-66th-place-scottsdale-az-primaryphoto.jpg",
       "yearCompleted": "",
-      "lat": 33.485161,
-      "lng": -111.9379425
+      "lat": 33.485585875589,
+      "lng": -111.937640266933
     },
     {
       "city": "Phoenix, AZ",
@@ -68,8 +68,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/f28c34602c6ecdb4c05ce708bae92f7b-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.5610298,
-      "lng": -112.1921675
+      "lat": 33.560864280517,
+      "lng": -112.192692364817
     },
     {
       "city": "Mesa, AZ",
@@ -88,8 +88,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/8ca04a2813e6569ce72633f434f3c4d1-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": null,
-      "lng": null
+      "lat": 32.880743871053,
+      "lng": -111.754844973515
     },
     {
       "city": "Scottsdale, AZ",
@@ -108,8 +108,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/7ada539cc098e49d5f4f9444fa8857aa-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.6176138,
-      "lng": -111.8858955
+      "lat": 33.617547639644,
+      "lng": -111.886073924838
     },
     {
       "city": "Tempe, AZ",
@@ -138,8 +138,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/19eecb5312283a2988043993c238dfb5-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": null,
-      "lng": null
+      "lat": 33.504013010294,
+      "lng": -112.085326657082
     },
     {
       "city": "Tempe, AZ",
@@ -158,8 +158,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/c8007ed38dda04f159446b0fcf885de1-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.4790112,
-      "lng": -111.8949301
+      "lat": 33.478891165126,
+      "lng": -111.895184505343
     },
     {
       "city": "Scottsdale, AZ",
@@ -288,8 +288,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/70370332cd30b721662fcf49b40caa5b-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.480069,
-      "lng": -111.8946789
+      "lat": 33.480321221039,
+      "lng": -111.894921712006
     },
     {
       "city": "Guadalupe, AZ",
@@ -368,8 +368,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/0b778f64dc28296dd5d17a8947f04356-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.4265393,
-      "lng": -111.9575697
+      "lat": 33.426514806737,
+      "lng": -111.957520369531
     },
     {
       "city": "Tempe, AZ",
@@ -398,8 +398,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/9dd14314d9fb9bf554e3f828726054db-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": null,
-      "lng": null
+      "lat": 33.392187594704,
+      "lng": -112.0700142122
     },
     {
       "city": "Glendale, AZ",
@@ -448,8 +448,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/ae97c36dd596fadad3ecff822450954e-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.4535399,
-      "lng": -112.298019
+      "lat": 33.453410088789,
+      "lng": -112.297877094453
     },
     {
       "city": "Goodyear, AZ",
@@ -488,8 +488,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/16d4e2c1b7f2e75d30a0ce278631e605-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.5872224,
-      "lng": -112.0936828
+      "lat": 33.587492884666,
+      "lng": -112.093527475029
     },
     {
       "city": "Tempe, AZ",
@@ -518,8 +518,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/8d835fc623e2666082d86dc9e611333a-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 34.2559317,
-      "lng": -111.3164356
+      "lat": 34.255943045967,
+      "lng": -111.316373513222
     },
     {
       "city": "Phoenix, AZ",

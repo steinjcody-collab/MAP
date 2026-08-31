@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30T13:08:33Z",
+  "updated": "2026-08-31T04:39:54Z",
   "listings": [
     {
       "address": "3425 W Picket Line, Flagstaff, AZ",
@@ -14,20 +14,6 @@
       "deal": "",
       "lat": 35.171692902886,
       "lng": -111.703135417813
-    },
-    {
-      "address": "1229 W 4th St Unit 3, Tempe, AZ",
-      "price": 1725.0,
-      "beds": 2,
-      "baths": 1,
-      "sqft": 825,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/1229-w-4th-st-tempe-az-unit-3/0bcxees6eqbm7/",
-      "deal": "$500 off",
-      "lat": 33.426399336763,
-      "lng": -111.957311175535
     },
     {
       "address": "4701 N 68th St Unit 111, Scottsdale, AZ",

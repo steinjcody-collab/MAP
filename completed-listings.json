@@ -1,6 +1,16 @@
 {
-  "updated": "2026-08-30T13:08:33Z",
+  "updated": "2026-08-31T04:39:54Z",
   "listings": [
+    {
+      "city": "Tempe, AZ",
+      "beds": 2,
+      "baths": 1,
+      "sqft": 825,
+      "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
+      "yearCompleted": "",
+      "lat": 33.426399336763,
+      "lng": -111.957311175535
+    },
     {
       "city": "Scottsdale, AZ",
       "beds": 0,
@@ -8,8 +18,8 @@
       "sqft": 0,
       "photo": "https://images.homes.com/listings/102/2114852684-099445812/3220-n-66th-place-scottsdale-az-primaryphoto.jpg",
       "yearCompleted": "",
-      "lat": 33.485585875589,
-      "lng": -111.937640266933
+      "lat": 33.485161,
+      "lng": -111.9379425
     },
     {
       "city": "Phoenix, AZ",
@@ -38,8 +48,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/f575a51eb2025a5a25d567da5cd3fce0-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": null,
-      "lng": null
+      "lat": 33.404642436173,
+      "lng": -111.927889379256
     },
     {
       "city": "Scottsdale, AZ",
@@ -58,8 +68,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/f28c34602c6ecdb4c05ce708bae92f7b-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.560864280517,
-      "lng": -112.192692364817
+      "lat": 33.5610298,
+      "lng": -112.1921675
     },
     {
       "city": "Mesa, AZ",
@@ -68,8 +78,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/022de5c4c3e184a7122ae1abb44de7d8-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.4415696,
-      "lng": -111.8307596
+      "lat": 33.441393370792,
+      "lng": -111.830538216542
     },
     {
       "city": "Casa Grande, AZ",
@@ -88,8 +98,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/005fc970eac2401466cea8627f54867c-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": null,
-      "lng": null
+      "lat": 33.485585875589,
+      "lng": -111.937640266933
     },
     {
       "city": "Scottsdale, AZ",
@@ -108,8 +118,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/2921ccacfb254d45524c224335e50fa5-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": null,
-      "lng": null
+      "lat": 33.426514454727,
+      "lng": -111.957436416019
     },
     {
       "city": "Phoenix, AZ",
@@ -118,8 +128,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/1eaa4189252efdeed153847d226687d1-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.6612205,
-      "lng": -112.0026044
+      "lat": 33.661074635952,
+      "lng": -112.002394336934
     },
     {
       "city": "Phoenix, AZ",
@@ -158,8 +168,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/6e416673a927d05a0161798ea8489638-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": null,
-      "lng": null
+      "lat": 33.505623702104,
+      "lng": -111.934616636341
     },
     {
       "city": "Scottsdale, AZ",
@@ -168,8 +178,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/2d36df2d6fd5e0491f0f3a4907448a1d-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": null,
-      "lng": null
+      "lat": 33.486411007034,
+      "lng": -111.93845212625
     },
     {
       "city": "Scottsdale, AZ",
@@ -178,8 +188,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/bd58afb1812b2a1999a6c815ceca6b7a-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.806118,
-      "lng": -111.8796349
+      "lat": 33.806012023724,
+      "lng": -111.879388804505
     },
     {
       "city": "Glendale, AZ",
@@ -198,8 +208,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/f4233f3f8163c62f80dad9a1427db3cd-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.425935,
-      "lng": -112.4027605
+      "lat": 33.425792484544,
+      "lng": -112.402672681922
     },
     {
       "city": "Phoenix, AZ",
@@ -228,8 +238,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/7714613e3671b059fabd3d86ca58f7d9-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.490058,
-      "lng": -112.214759
+      "lat": 33.4907229331,
+      "lng": -112.214570626245
     },
     {
       "city": "Tempe, AZ",
@@ -238,8 +248,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/9558e5fc8f7ab692a8c0653d784ae197-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": null,
-      "lng": null
+      "lat": 33.426514278721,
+      "lng": -111.957394439263
     },
     {
       "city": "Scottsdale, AZ",
@@ -248,8 +258,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/443c9a2963e36fb22b9453eb86f5ce21-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.485161,
-      "lng": -111.9379425
+      "lat": 33.485585875589,
+      "lng": -111.937640266933
     },
     {
       "city": "Scottsdale, AZ",
@@ -258,8 +268,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/2514978dee3f8a6fffc6a8dcd16529b0-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.4642339,
-      "lng": -111.9124009
+      "lat": 33.464331576647,
+      "lng": -111.912870222995
     },
     {
       "city": "Glendale, AZ",
@@ -268,8 +278,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/2a1774e425bd9c6feed114ac85c14a9c-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.5405125,
-      "lng": -112.2544082
+      "lat": 33.540676107463,
+      "lng": -112.254000221423
     },
     {
       "city": "Scottsdale, AZ",
@@ -288,8 +298,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/e37cb423452bbaee47dd59502ff40b1d-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.3630966,
-      "lng": -111.9642575
+      "lat": 33.37441769983,
+      "lng": -111.964965646365
     },
     {
       "city": "Phoenix, AZ",
@@ -298,8 +308,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/3ad37f8e14abdffca43017076b23f27b-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.5807451,
-      "lng": -112.0540853
+      "lat": 33.579789302293,
+      "lng": -112.056593197995
     },
     {
       "city": "Phoenix, AZ",
@@ -348,8 +358,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/49b09ed46b2a0c46219043bcec7e6fcc-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.399284,
-      "lng": -111.921817
+      "lat": 33.399301585293,
+      "lng": -111.92192241254
     },
     {
       "city": "Tempe, AZ",
@@ -358,8 +368,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/0b778f64dc28296dd5d17a8947f04356-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.426514806737,
-      "lng": -111.957520369531
+      "lat": 33.4265393,
+      "lng": -111.9575697
     },
     {
       "city": "Tempe, AZ",
@@ -378,8 +388,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/2aeeffe9ab853535f6332d3477255a56-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": null,
-      "lng": null
+      "lat": 33.755400525947,
+      "lng": -111.706919258156
     },
     {
       "city": "Phoenix, AZ",
@@ -388,8 +398,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/9dd14314d9fb9bf554e3f828726054db-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.392187594704,
-      "lng": -112.0700142122
+      "lat": null,
+      "lng": null
     },
     {
       "city": "Glendale, AZ",
@@ -458,8 +468,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/5a9729fa0080d0d9c43b1f60368a49fc-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.5038,
-      "lng": -111.9153
+      "lat": 33.503689532928,
+      "lng": -111.916737428151
     },
     {
       "city": "Tempe, AZ",
@@ -488,8 +498,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/3a5d007f367e8d2d5bc32bad9a3f2f14-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.371375,
-      "lng": -111.9150855
+      "lat": 33.371953602447,
+      "lng": -111.915238465132
     },
     {
       "city": "Laveen, AZ",
@@ -508,8 +518,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/8d835fc623e2666082d86dc9e611333a-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 34.255943045967,
-      "lng": -111.316373513222
+      "lat": 34.2559317,
+      "lng": -111.3164356
     },
     {
       "city": "Phoenix, AZ",

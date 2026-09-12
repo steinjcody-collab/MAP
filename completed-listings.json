@@ -1,15 +1,15 @@
 {
-  "updated": "2026-09-11T16:48:44Z",
+  "updated": "2026-09-12T15:55:52Z",
   "listings": [
     {
-      "city": "Tempe, AZ",
-      "beds": 2,
-      "baths": 1,
-      "sqft": 825,
-      "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
+      "city": "Scottsdale, AZ",
+      "beds": 4,
+      "baths": 2,
+      "sqft": 1522,
+      "photo": "https://images.homes.com/listings/102/2419615405-712618132/6502-e-grandview-dr-scottsdale-az-primaryphoto.jpg",
       "yearCompleted": "",
-      "lat": 33.426399336763,
-      "lng": -111.957311175535
+      "lat": 33.636072967542,
+      "lng": -111.940218214961
     },
     {
       "city": "Scottsdale, AZ",

@@ -1,6 +1,26 @@
 {
-  "updated": "2026-09-24T22:51:23Z",
+  "updated": "2026-09-24T22:54:26Z",
   "listings": [
+    {
+      "city": "Phoenix, AZ",
+      "beds": 2,
+      "baths": 2,
+      "sqft": 1158,
+      "photo": "https://images.homes.com/listings/102/2669082794-730065622/2150-e-bell-rd-phoenix-az-unit-1056-primaryphoto.jpg",
+      "yearCompleted": "",
+      "lat": 33.640530042444,
+      "lng": -112.036216876218
+    },
+    {
+      "city": "Phoenix, AZ",
+      "beds": 4,
+      "baths": 2,
+      "sqft": 2297,
+      "photo": "https://images.homes.com/listings/102/4594327694-638681622/2310-w-spur-dr-phoenix-az-primaryphoto.jpg",
+      "yearCompleted": "",
+      "lat": 33.726417444284,
+      "lng": -112.108327646804
+    },
     {
       "city": "Scottsdale, AZ",
       "beds": 4,
@@ -338,8 +358,8 @@
       "sqft": 0,
       "photo": "https://photos.zillowstatic.com/fp/fed8cde9f9a7760c7abe8e2e2cced2a9-rentals_thumb_180_180.webp",
       "yearCompleted": "",
-      "lat": 33.495766439885,
-      "lng": -111.903667788412
+      "lat": 33.495884,
+      "lng": -111.9029665
     },
     {
       "city": "Phoenix, AZ",

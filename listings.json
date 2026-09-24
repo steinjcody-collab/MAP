@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-24T22:51:23Z",
+  "updated": "2026-09-24T22:54:26Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -28,34 +28,6 @@
       "deal": "$500 off",
       "lat": 33.426399336763,
       "lng": -111.957311175535
-    },
-    {
-      "address": "2150 E Bell Rd Unit 1056, Phoenix, AZ",
-      "price": 2000.0,
-      "beds": 2,
-      "baths": 2,
-      "sqft": 1158,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/2669082794-730065622/2150-e-bell-rd-phoenix-az-unit-1056-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/2150-e-bell-rd-phoenix-az-unit-1056/zrhn87e6xj00s/",
-      "deal": "",
-      "lat": 33.6384,
-      "lng": -112.0339
-    },
-    {
-      "address": "2310 W Spur Dr, Phoenix, AZ",
-      "price": 2650,
-      "beds": 4,
-      "baths": 2,
-      "sqft": 2297,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/4594327694-638681622/2310-w-spur-dr-phoenix-az-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/2310-w-spur-dr-phoenix-az/xj4q8h8dkvjtz/",
-      "deal": "",
-      "lat": 33.7265795,
-      "lng": -112.1086215
     },
     {
       "address": "3173 W Peak View Rd, Phoenix, AZ",

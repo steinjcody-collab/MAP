@@ -1,6 +1,20 @@
 {
-  "updated": "2026-09-24T17:38:02Z",
+  "updated": "2026-09-24T22:48:04Z",
   "listings": [
+    {
+      "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
+      "price": 2600,
+      "beds": 4,
+      "baths": 2.5,
+      "sqft": 1464,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://photos.zillowstatic.com/fp/2f96593ea1ffe3e3de4163c02097c200-uncropped_scaled_within_1536_1152.webp",
+      "url": "https://www.zillow.com/homedetails/1332-E-Dunbar-Dr-Phoenix-AZ-85042/60047833_zpid/?view=public",
+      "deal": "",
+      "lat": 33.379075506505,
+      "lng": -112.05302663526
+    },
     {
       "address": "1229 W 4th St Unit 3, Tempe, AZ",
       "price": 1725.0,

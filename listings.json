@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06T18:41:12Z",
+  "updated": "2026-10-07T19:07:42Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -70,6 +70,20 @@
       "deal": "",
       "lat": 32.880675967627,
       "lng": -111.754846144269
+    },
+    {
+      "address": "3708 E Kerry Ln, Phoenix, AZ 85050",
+      "price": 2800,
+      "beds": 3,
+      "baths": 2.5,
+      "sqft": 1813,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://photos.zillowstatic.com/fp/1eaa4189252efdeed153847d226687d1-uncropped_scaled_within_1536_1152.webp",
+      "url": "",
+      "deal": "",
+      "lat": 33.661073156196,
+      "lng": -112.002392438329
     },
     {
       "address": "3",

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T00:21:07Z",
+  "updated": "2026-10-13T01:29:05Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -58,48 +58,6 @@
       "lng": -111.754846144269
     },
     {
-      "address": "1234 W 4th St Unit 2, Tempe, AZ",
-      "price": 1050.0,
-      "beds": 1,
-      "baths": 1,
-      "sqft": 300,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/5477885205-408267032/1234-w-4th-st-tempe-az-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/1234-w-4th-st-tempe-az-unit-2/216rf5ymv7y74/",
-      "deal": "",
-      "lat": 33.426513585114,
-      "lng": -111.957437389082
-    },
-    {
-      "address": "9040 E Winchcomb Dr, Scottsdale, AZ",
-      "price": 2900.0,
-      "beds": 2,
-      "baths": 2,
-      "sqft": 1100,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/6089802205-977613032/9040-e-winchcomb-dr-scottsdale-az-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/9040-e-winchcomb-dr-scottsdale-az/d1b6vzfehl92c/",
-      "deal": "",
-      "lat": 33.61755055338,
-      "lng": -111.886076723773
-    },
-    {
-      "address": "2209 S Granada Dr Unit C, Tempe, AZ",
-      "price": 1200.0,
-      "beds": 1,
-      "baths": 1,
-      "sqft": 650,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/9309100105-075691522/2209-s-granada-dr-tempe-az-unit-c-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/2209-s-granada-dr-tempe-az-unit-c/w1ycsfqfc492g/",
-      "deal": "",
-      "lat": 33.404640875823,
-      "lng": -111.927887391153
-    },
-    {
       "address": "3708 E Kerry Ln Phoenix Az",
       "price": 3100,
       "beds": 3,
@@ -112,6 +70,48 @@
       "deal": "",
       "lat": 33.661073156196,
       "lng": -112.002392438329
+    },
+    {
+      "address": "30600 N Pima Rd Unit 19, Scottsdale, AZ",
+      "price": 7800,
+      "beds": 5,
+      "baths": 3.5,
+      "sqft": 3272,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://photos.zillowstatic.com/fp/d9fc945810a90747d0e7bc467d15a6c5-cc_ft_1536.jpg",
+      "url": "https://www.zillow.com/homedetails/30600-N-Pima-Rd-UNIT-19-Scottsdale-AZ-85266/8035756_zpid/",
+      "deal": "",
+      "lat": 33.7662245,
+      "lng": -111.8967275
+    },
+    {
+      "address": "3320 S Juniper St, Tempe, AZ",
+      "price": 2200,
+      "beds": 3,
+      "baths": 3,
+      "sqft": 1704,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://photos.zillowstatic.com/fp/e45ea9b757fde3bf66e4d768273080d7-cc_ft_1536.jpg",
+      "url": "https://www.zillow.com/homedetails/3320-S-Juniper-St-Tempe-AZ-85282/7593142_zpid/",
+      "deal": "",
+      "lat": 33.392271519325,
+      "lng": -111.912576794445
+    },
+    {
+      "address": "2016 W Cactus Rd Unit A, Phoenix, AZ",
+      "price": 1300,
+      "beds": 2,
+      "baths": 1,
+      "sqft": 900,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://photos.zillowstatic.com/fp/8128275b7f4d6a3652277d91685ed360-cc_ft_1536.jpg",
+      "url": "https://www.zillow.com/homedetails/2016-W-Cactus-Rd-Phoenix-AZ-85029/7738572_zpid/",
+      "deal": "",
+      "lat": 33.59658051457,
+      "lng": -112.102052291675
     },
     {
       "address": "3",

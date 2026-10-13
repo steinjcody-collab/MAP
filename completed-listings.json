@@ -1,6 +1,16 @@
 {
-  "updated": "2026-10-12T21:27:44Z",
+  "updated": "2026-10-13T00:21:07Z",
   "listings": [
+    {
+      "city": "Tempe, AZ",
+      "beds": 2,
+      "baths": 1,
+      "sqft": 800,
+      "photo": "https://images.homes.com/listings/102/8226025405-288718132/1222-w-4th-st-tempe-az-unit-2-primaryphoto.jpg",
+      "yearCompleted": "",
+      "lat": 33.426512530327,
+      "lng": -111.957185708806
+    },
     {
       "city": "Phoenix, AZ",
       "beds": 2,
@@ -12,16 +22,6 @@
       "lng": -112.036216876218
     },
     {
-      "city": "Phoenix, AZ",
-      "beds": 4,
-      "baths": 2,
-      "sqft": 2297,
-      "photo": "https://images.homes.com/listings/102/4594327694-638681622/2310-w-spur-dr-phoenix-az-primaryphoto.jpg",
-      "yearCompleted": "",
-      "lat": 33.726417444284,
-      "lng": -112.108327646804
-    },
-    {
       "city": "Scottsdale, AZ",
       "beds": 4,
       "baths": 2,
@@ -30,6 +30,16 @@
       "yearCompleted": "",
       "lat": 33.636072618121,
       "lng": -111.940217095252
+    },
+    {
+      "city": "Phoenix, AZ",
+      "beds": 4,
+      "baths": 2,
+      "sqft": 2297,
+      "photo": "https://images.homes.com/listings/102/4594327694-638681622/2310-w-spur-dr-phoenix-az-primaryphoto.jpg",
+      "yearCompleted": "",
+      "lat": 33.726417444284,
+      "lng": -112.108327646804
     },
     {
       "city": "Scottsdale, AZ",

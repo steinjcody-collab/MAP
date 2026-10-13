@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T21:27:44Z",
+  "updated": "2026-10-13T00:21:07Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -25,7 +25,7 @@
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
       "url": "https://www.homes.com/property/1229-w-4th-st-tempe-az-unit-3/0bcxees6eqbm7/",
-      "deal": "$500 off",
+      "deal": "",
       "lat": 33.426399336763,
       "lng": -111.957311175535
     },
@@ -44,20 +44,6 @@
       "lng": -112.1271217
     },
     {
-      "address": "1222 W 4th St Unit 2, Tempe, AZ",
-      "price": 1525,
-      "beds": 2,
-      "baths": 1,
-      "sqft": 800,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/8226025405-288718132/1222-w-4th-st-tempe-az-unit-2-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/1222-w-4th-st-tempe-az-unit-2/8v0pqgqqnvle4/",
-      "deal": "$500 off",
-      "lat": 33.426513398694,
-      "lng": -111.957184555482
-    },
-    {
       "address": "803 N Park Ave, Casa Grande, AZ",
       "price": 1300,
       "beds": 2,
@@ -72,14 +58,56 @@
       "lng": -111.754846144269
     },
     {
-      "address": "3708 E Kerry Ln, Phoenix, AZ 85050",
-      "price": 2800,
+      "address": "1234 W 4th St Unit 2, Tempe, AZ",
+      "price": 1050.0,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 300,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://images.homes.com/listings/102/5477885205-408267032/1234-w-4th-st-tempe-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/1234-w-4th-st-tempe-az-unit-2/216rf5ymv7y74/",
+      "deal": "",
+      "lat": 33.426513585114,
+      "lng": -111.957437389082
+    },
+    {
+      "address": "9040 E Winchcomb Dr, Scottsdale, AZ",
+      "price": 2900.0,
+      "beds": 2,
+      "baths": 2,
+      "sqft": 1100,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://images.homes.com/listings/102/6089802205-977613032/9040-e-winchcomb-dr-scottsdale-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/9040-e-winchcomb-dr-scottsdale-az/d1b6vzfehl92c/",
+      "deal": "",
+      "lat": 33.61755055338,
+      "lng": -111.886076723773
+    },
+    {
+      "address": "2209 S Granada Dr Unit C, Tempe, AZ",
+      "price": 1200.0,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 650,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://images.homes.com/listings/102/9309100105-075691522/2209-s-granada-dr-tempe-az-unit-c-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/2209-s-granada-dr-tempe-az-unit-c/w1ycsfqfc492g/",
+      "deal": "",
+      "lat": 33.404640875823,
+      "lng": -111.927887391153
+    },
+    {
+      "address": "3708 E Kerry Ln Phoenix Az",
+      "price": 3100,
       "beds": 3,
-      "baths": 2.5,
+      "baths": 3,
       "sqft": 1813,
       "status": "Active",
       "type": "rent",
-      "photo": "https://photos.zillowstatic.com/fp/1eaa4189252efdeed153847d226687d1-uncropped_scaled_within_1536_1152.webp",
+      "photo": "https://cdn.resize.sparkplatform.com/az/2048x1600/true/20260720215758245704000000-o.jpg",
       "url": "",
       "deal": "",
       "lat": 33.661073156196,

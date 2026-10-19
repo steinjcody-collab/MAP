@@ -1,6 +1,16 @@
 {
-  "updated": "2026-10-18T16:12:13Z",
+  "updated": "2026-10-19T17:11:05Z",
   "listings": [
+    {
+      "city": "Phoenix, AZ",
+      "beds": 2,
+      "baths": 1,
+      "sqft": 900,
+      "photo": "https://photos.zillowstatic.com/fp/8128275b7f4d6a3652277d91685ed360-cc_ft_1536.jpg",
+      "yearCompleted": "",
+      "lat": 33.59658051457,
+      "lng": -112.102052291675
+    },
     {
       "city": "Tempe, AZ",
       "beds": 2,

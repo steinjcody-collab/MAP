@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18T16:12:13Z",
+  "updated": "2026-10-19T17:11:05Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -45,7 +45,7 @@
     },
     {
       "address": "803 N Park Ave, Casa Grande, AZ",
-      "price": 1300,
+      "price": 1250,
       "beds": 2,
       "baths": 1,
       "sqft": 850,
@@ -98,20 +98,6 @@
       "deal": "",
       "lat": 33.392271519325,
       "lng": -111.912576794445
-    },
-    {
-      "address": "2016 W Cactus Rd Unit A, Phoenix, AZ",
-      "price": 1300,
-      "beds": 2,
-      "baths": 1,
-      "sqft": 900,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://photos.zillowstatic.com/fp/8128275b7f4d6a3652277d91685ed360-cc_ft_1536.jpg",
-      "url": "https://www.zillow.com/homedetails/2016-W-Cactus-Rd-Phoenix-AZ-85029/7738572_zpid/",
-      "deal": "",
-      "lat": 33.59658051457,
-      "lng": -112.102052291675
     },
     {
       "address": "3",

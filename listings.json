@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-19T17:32:01Z",
+  "updated": "2026-10-19T17:40:28Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -17,7 +17,7 @@
     },
     {
       "address": "1229 W 4th St Unit 3, Tempe, AZ",
-      "price": 1725.0,
+      "price": 1675.0,
       "beds": 2,
       "baths": 1,
       "sqft": 825,

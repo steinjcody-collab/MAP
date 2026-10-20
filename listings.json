@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-20T17:36:56Z",
+  "updated": "2026-10-20T19:29:13Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -16,18 +16,18 @@
       "lng": -112.05302663526
     },
     {
-      "address": "3908 W Rose Garden Ln",
+      "address": "3908 W Rose Garden Ln, Glendale, AZ 85308",
       "price": 3100,
       "beds": 4,
       "baths": 2,
       "sqft": 1767,
       "status": "Active",
       "type": "rent",
-      "photo": "https://www.zillow.com/homedetails/3908-W-Rose-Garden-Ln-Glendale-AZ-85308/59266289_zpid/?view=public&mmlb=g,0",
-      "url": "",
+      "photo": "https://photos.zillowstatic.com/fp/7029b4c3a9e35d9584ac63dc889dd177-cc_ft_1536.jpg",
+      "url": "https://www.zillow.com/homedetails/3908-W-Rose-Garden-Ln-Glendale-AZ-85308/59266289_zpid/?view=public",
       "deal": "",
-      "lat": 33.6766902,
-      "lng": -112.1438295
+      "lat": 33.676919499861,
+      "lng": -112.145183522309
     },
     {
       "address": "1229 W 4th St Unit 3, Tempe, AZ",
@@ -112,20 +112,6 @@
       "deal": "",
       "lat": 33.392271519325,
       "lng": -111.912576794445
-    },
-    {
-      "address": "3",
-      "price": 0,
-      "beds": 0,
-      "baths": 0,
-      "sqft": 0,
-      "status": "",
-      "type": "",
-      "photo": "",
-      "url": "",
-      "deal": "",
-      "lat": 39.553048,
-      "lng": -91.158606
     }
   ]
 }

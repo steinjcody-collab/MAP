@@ -5,177 +5,115 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cody Stein — Listings Map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <style>
   :root{
-    --ink:#23342E;
+    --ink:#1F2E29;
     --sand:#F4EFE4;
     --card:#FFFDF8;
-    --hairline:#D8CFBA;
+    --hairline:#E4DCCB;
     --clay:#A64B2A;
-    --sage:#5F7856;
-    --muted:#7A7364;
+    --sage:#4F6B47;
+    --sage-soft:#E7EDE3;
+    --muted:#6F695C;
+    --shadow:0 1px 2px rgba(31,46,41,.08), 0 6px 18px rgba(31,46,41,.10);
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;height:100%;background:var(--sand);color:var(--ink);font-family:'Inter',sans-serif;}
+  html,body{margin:0;height:100%;background:var(--sand);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
 
   header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:18px 28px;
-    border-bottom:1px solid var(--hairline);
-    background:var(--sand);
-    position:relative;
-    z-index:20;
-    flex-wrap:wrap;
-    gap:12px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:16px 22px;background:var(--card);border-bottom:1px solid var(--hairline);
   }
-  .brand{display:flex;flex-direction:column;line-height:1.1;}
-  .brand .name{font-family:'Fraunces',serif;font-weight:600;font-size:22px;letter-spacing:-0.01em;}
-  .brand .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:2px;}
-
-  .filters{display:flex;gap:8px;}
+  .brand .name{font-family:'Fraunces',serif;font-weight:600;font-size:22px;letter-spacing:-.01em;line-height:1.1;}
+  .brand .tag{font-size:12px;color:var(--muted);margin-top:3px;}
+  .filters{display:flex;gap:6px;background:var(--sand);padding:4px;border-radius:999px;}
   .filters button{
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:13px;
-    padding:8px 16px;
-    border-radius:999px;
-    border:1px solid var(--hairline);
-    background:var(--card);
-    color:var(--ink);
-    cursor:pointer;
-    transition:all .15s ease;
+    font:600 13px 'Inter',sans-serif;padding:7px 14px;border-radius:999px;border:0;
+    background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;
   }
-  .filters button.active[data-type="all"]{background:var(--ink);color:var(--sand);border-color:var(--ink);}
-  .filters button.active[data-type="sale"]{background:var(--clay);color:#fff;border-color:var(--clay);}
-  .filters button.active[data-type="rent"]{background:var(--sage);color:#fff;border-color:var(--sage);}
-  .filters button:hover:not(.active){border-color:var(--ink);}
+  .filters button.active{background:var(--card);color:var(--ink);box-shadow:var(--shadow);}
 
-  .layout{display:flex;height:calc(100% - 72px);}
-  #list{
-    width:340px;
-    min-width:340px;
-    overflow-y:auto;
-    border-right:1px solid var(--hairline);
-    background:var(--card);
-    padding-bottom:16px;
-  }
-  .listing-card{
-    display:flex;
-    gap:12px;
-    padding:14px 20px;
-    border-bottom:1px solid var(--hairline);
-    cursor:pointer;
-    transition:background .12s ease;
-  }
-  .listing-card:hover{background:var(--sand);}
-  .listing-card .thumb{
-    width:64px;height:64px;border-radius:8px;flex-shrink:0;
-    background-size:cover;background-position:center;
-    background-color:var(--hairline);
-    border:1px solid var(--hairline);
-    position:relative;
-  }
-  .thumb-deal-badge{
-    position:absolute;top:-4px;left:-4px;
-    background:var(--clay);color:#fff;
-    font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;
-    text-transform:uppercase;letter-spacing:.03em;
-    padding:2px 5px;border-radius:4px;
-    box-shadow:0 1px 3px rgba(0,0,0,.35);
-    max-width:70px;line-height:1.2;
-  }
-  .listing-card .info{min-width:0;}
-  .listing-card .price{
-    font-family:'Fraunces',serif;font-weight:600;font-size:17px;
-  }
-  .listing-card.rent .price::after{content:" /mo";font-family:'Inter',sans-serif;font-weight:500;font-size:12px;color:var(--muted);}
-  .listing-card .addr{font-size:12.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .listing-card .stats{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:5px;letter-spacing:.02em;}
-  .listing-card .pill{
-    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;
-    text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;
-    margin-top:6px;
-  }
-  .listing-card.sale .pill{background:rgba(166,75,42,.12);color:var(--clay);}
-  .listing-card.rent .pill{background:rgba(95,120,86,.14);color:var(--sage);}
-  .deal-pill{
-    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;
-    text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;
-    margin-top:6px;margin-left:6px;
-    background:rgba(166,75,42,.9);color:#fff;
-  }
-  .view-link{
-    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
-    text-transform:uppercase;letter-spacing:.04em;margin-top:8px;color:var(--ink);
-    text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px;
-  }
-  .view-link:hover{color:var(--clay);border-color:var(--clay);}
-  .popup .view-link{margin-top:10px;}
+  .layout{display:flex;height:calc(100% - 71px);}
+  .sidebar{width:380px;min-width:380px;display:flex;flex-direction:column;background:var(--card);border-right:1px solid var(--hairline);}
+  .count{padding:12px 18px;font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--hairline);}
+  .count b{color:var(--ink);}
+  #list{flex:1;overflow-y:auto;padding:10px;}
 
-  #map{flex:1;}
-  /* Safety net: if leaflet.css fails to load (e.g. blocked on a mobile
-     network or by a content blocker), Leaflet's own container can end up
-     with no width/height/position even though #map itself is sized
-     correctly — this guarantees it fills #map regardless. */
-  #map .leaflet-container{width:100% !important;height:100% !important;position:relative !important;background:var(--sand);}
+  .card{
+    display:flex;gap:12px;padding:10px;border-radius:12px;cursor:pointer;
+    border:1px solid transparent;transition:background .12s,border-color .12s,box-shadow .12s;
+  }
+  .card + .card{margin-top:6px;}
+  .card:hover,.card.hl{background:var(--sand);border-color:var(--hairline);}
+  .card.active{background:var(--card);border-color:var(--ink);box-shadow:var(--shadow);}
+  .thumb{
+    width:112px;height:84px;border-radius:9px;flex-shrink:0;position:relative;overflow:hidden;
+    background:var(--hairline);
+  }
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#B5AA93;}
+  .ph svg{width:30px;height:30px;}
+  .badge{
+    position:absolute;top:6px;left:6px;background:var(--clay);color:#fff;
+    font:700 9.5px 'Inter',sans-serif;letter-spacing:.04em;text-transform:uppercase;
+    padding:3px 6px;border-radius:5px;max-width:96px;line-height:1.2;
+  }
+  .info{min-width:0;display:flex;flex-direction:column;justify-content:center;}
+  .price{font-family:'Fraunces',serif;font-weight:600;font-size:19px;line-height:1.1;}
+  .price small{font:500 12px 'Inter',sans-serif;color:var(--muted);}
+  .addr{font-size:13px;color:var(--ink);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .stats{font-size:12px;color:var(--muted);margin-top:3px;}
+  .row{display:flex;align-items:center;gap:8px;margin-top:7px;flex-wrap:wrap;}
+  .tag{font:600 10.5px 'Inter',sans-serif;letter-spacing:.03em;padding:2px 8px;border-radius:999px;}
+  .tag.rent{background:var(--sage-soft);color:var(--sage);}
+  .tag.sale{background:rgba(166,75,42,.12);color:var(--clay);}
+  .link{font:600 12px 'Inter',sans-serif;color:var(--ink);text-decoration:none;border-bottom:1px solid currentColor;}
+  .link:hover{color:var(--clay);}
+  .pending{font-size:11px;color:var(--muted);}
+  .empty{padding:30px 18px;color:var(--muted);font-size:14px;text-align:center;}
 
-  .leaflet-popup-content-wrapper{
-    background:var(--card);border-radius:10px;
-  }
-  .popup{font-family:'Inter',sans-serif;width:220px;}
-  .popup img{width:100%;height:120px;object-fit:cover;border-radius:6px;margin-bottom:8px;background:var(--hairline);}
-  .popup .price{font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:var(--ink);}
-  .popup .addr{font-size:12px;color:var(--muted);margin:2px 0 6px;}
-  .popup .stats{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);}
-  .popup .meta{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
-  .popup .pill{
-    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;
-    text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;
-  }
-  .popup.sale .pill{background:rgba(166,75,42,.12);color:var(--clay);}
-  .popup.rent .pill{background:rgba(95,120,86,.14);color:var(--sage);}
-  .popup .status{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);}
-  .popup .deal-pill{margin-left:6px;}
+  #map{flex:1;position:relative;}
+  .map-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;padding:20px;text-align:center;}
 
-  .marker-pin{
-    width:30px;height:30px;border-radius:50% 50% 50% 0;
-    transform:rotate(-45deg);
-    display:flex;align-items:center;justify-content:center;
-    border:2px solid var(--card);
-    box-shadow:0 1px 3px rgba(0,0,0,.35);
+  /* price-tag markers */
+  .pin{
+    font:700 12.5px 'Inter',sans-serif;color:var(--ink);background:var(--card);
+    padding:5px 10px;border-radius:999px;border:1.5px solid var(--ink);
+    box-shadow:0 2px 6px rgba(0,0,0,.18);white-space:nowrap;cursor:pointer;
+    transition:transform .12s,background .12s,color .12s;position:relative;
   }
-  .marker-pin.sale{background:var(--clay);}
-  .marker-pin.rent{background:var(--sage);}
+  .pin::after{
+    content:"";position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);
+    border:6px solid transparent;border-bottom:0;border-top-color:var(--ink);
+  }
+  .pin.sale{border-color:var(--clay);color:var(--clay);}
+  .pin.sale::after{border-top-color:var(--clay);}
+  .pin.hl,.pin.active{background:var(--ink);color:#fff;transform:scale(1.12);}
+  .pin.sale.hl,.pin.sale.active{background:var(--clay);color:#fff;}
+  .maplibregl-marker:has(.pin.hl),.maplibregl-marker:has(.pin.active){z-index:5;}
+
+  .maplibregl-popup-content{padding:0;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:var(--card);}
+  .maplibregl-popup-close-button{font-size:20px;width:30px;height:30px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);right:2px;top:2px;}
+  .pop{width:260px;font-family:'Inter',sans-serif;}
+  .pop .thumb{width:100%;height:150px;border-radius:0;}
+  .pop .body{padding:12px 14px 14px;}
+  .pop .addr{white-space:normal;}
 
   footer{
-    position:fixed;bottom:0;left:0;right:0;
-    padding:6px 16px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:10.5px;
-    color:var(--muted);
-    background:var(--sand);
-    border-top:1px solid var(--hairline);
-    z-index:20;
-    text-align:right;
+    position:fixed;right:10px;bottom:8px;z-index:3;font-size:11px;color:var(--muted);
+    background:rgba(255,253,248,.9);padding:3px 8px;border-radius:6px;
   }
 
-  @media (max-width: 760px){
+  @media (max-width:760px){
+    header{padding:12px 14px;}
     .layout{flex-direction:column;height:auto;}
-    #list{width:100%;min-width:0;max-height:55vh;order:2;}
-    /* #map inherits "flex:1" from the desktop rule above, which sets
-       flex-basis:0%. Inside this mobile layout, .layout has height:auto —
-       so there's no definite space for flex-grow to fill, and some mobile
-       browsers (notably iOS Safari) then render #map at 0 actual height,
-       ignoring the height:52vh below entirely. Removing the flex behavior
-       here makes the explicit height the real, honored size. */
-    #map{height:45vh;min-height:45vh;flex:none;order:1;}
-    header{padding:14px 16px;}
+    #map{height:46vh;min-height:300px;flex:none;}
+    .sidebar{width:100%;min-width:0;border-right:0;border-top:1px solid var(--hairline);}
+    #list{overflow:visible;}
+    .thumb{width:100px;height:76px;}
+    footer{position:static;text-align:center;background:none;padding:10px;}
   }
 </style>
 </head>
@@ -183,8 +121,8 @@
 
 <header>
   <div class="brand">
-    <span class="name">Cody Stein</span>
-    <span class="tag">Current listings</span>
+    <div class="name">Cody Stein</div>
+    <div class="tag">Current listings</div>
   </div>
   <div class="filters">
     <button data-type="all" class="active">All</button>
@@ -194,241 +132,214 @@
 </header>
 
 <div class="layout">
-  <div id="list"></div>
+  <aside class="sidebar">
+    <div class="count" id="count">Loading listings…</div>
+    <div id="list"></div>
+  </aside>
   <div id="map"></div>
 </div>
-
 <footer id="updated"></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script>
-if(typeof L === 'undefined'){
-  document.getElementById('map').innerHTML = '<div style="padding:20px;color:#7A7364;font-size:13px;">Map library failed to load — check your connection and refresh.</div>';
-  throw new Error('Leaflet failed to load from CDN');
+// ---------- helpers ----------
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const HOUSE = '<div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>';
+
+// A photo cell sometimes holds a listing PAGE link (e.g. zillow.com/homedetails/...)
+// instead of an image link. Browsers can't display that, so treat it as "no photo"
+// and show the placeholder instead of a broken/blank box.
+function isImage(u){
+  if(!u) return false;
+  if(/zillow\.com\/homedetails|homes\.com\/property/i.test(u)) return false;
+  return /\.(jpe?g|png|webp|gif|avif)(\?|#|$)/i.test(u) || /zillowstatic|images\.homes\.com|sparkplatform|googleusercontent|wsimg/i.test(u);
+}
+function photoHtml(l){
+  if(!isImage(l.photo)) return HOUSE;
+  return `<img src="${esc(l.photo)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{innerHTML:HOUSE_HTML}).firstChild)">`;
+}
+window.HOUSE_HTML = HOUSE;
+
+const money = n => '$' + Number(n).toLocaleString();
+function priceHtml(l){ return money(l.price) + (l.type === 'rent' ? ' <small>/mo</small>' : ''); }
+function shortPrice(l){
+  const p = Number(l.price);
+  if(l.type === 'rent') return '$' + p.toLocaleString();
+  return p >= 1e6 ? '$' + (p/1e6).toFixed(p % 1e6 ? 2 : 0).replace(/\.?0+$/,'') + 'M' : '$' + Math.round(p/1000) + 'K';
+}
+function statsHtml(l){
+  const parts = [];
+  if(+l.beds) parts.push(`${l.beds} bd`);
+  if(+l.baths) parts.push(`${l.baths} ba`);
+  if(+l.sqft) parts.push(`${Number(l.sqft).toLocaleString()} sqft`);
+  return parts.join(' · ');
 }
 
-// maxZoom is set here on the map itself (not just on the tile layer below)
-// because Leaflet.markercluster needs a defined max zoom the moment it's
-// added to the map — which happens before the tile layer (and its own
-// maxZoom) is added. Without this, it throws "Map has no maxZoom
-// specified" and the whole script stops before listings.json is even
-// fetched, leaving a blank page.
-const map = L.map('map', { zoomControl: true, maxZoom: 19 }).setView([33.6, -112.0], 9);
+// ---------- state ----------
+let ALL = [], filter = 'all', activeIdx = null;
+const markers = new Map();   // idx -> {marker, el}
+const cards = new Map();     // idx -> card element
+let popup = null;
 
-// Groups pins into a single numbered circle when they're close together at
-// the current zoom level, and automatically splits them apart again once
-// you zoom in far enough to tell them apart individually.
-//
-// The clustering plugin loads from a CDN separately from Leaflet itself —
-// if that request is slow, blocked, or briefly down, L.markerClusterGroup
-// simply won't exist. Previously that threw here and killed the rest of
-// the script (map, sidebar list, filters — everything), since this is a
-// synchronous statement that runs before listings.json is even fetched.
-// Guard it and fall back to plain (unclustered) markers instead, so the
-// site still works even if clustering doesn't.
-let clusterGroup;
-if (typeof L.markerClusterGroup === 'function') {
-  clusterGroup = L.markerClusterGroup({
-    maxClusterRadius: 50,
-    iconCreateFunction: function(cluster) {
-      const count = cluster.getChildCount();
-      return L.divIcon({
-        html: `<div style="
-          background: var(--ink);
-          color: var(--sand);
-          width: 38px; height: 38px;
-          border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-          font-family: 'IBM Plex Mono', monospace;
-          font-weight: 600; font-size: 14px;
-          border: 2px solid var(--card);
-          box-shadow: 0 1px 4px rgba(0,0,0,.4);
-        ">${count}</div>`,
-        className: '',
-        iconSize: [38, 38]
-      });
-    }
-  });
-} else {
-  console.warn('Marker clustering plugin failed to load — showing individual pins instead.');
-  clusterGroup = L.layerGroup();
-  // Card clicks call clusterGroup.zoomToShowLayer(marker, cb) below; the
-  // plain layerGroup fallback doesn't have that method, so provide an
-  // equivalent (just zoom/pan to the marker, no de-clustering needed).
-  clusterGroup.zoomToShowLayer = function(marker, cb) {
-    map.setView(marker.getLatLng(), Math.max(map.getZoom(), 14));
-    if (cb) cb();
-  };
-}
-map.addLayer(clusterGroup);
-
-// CARTO's free raster basemaps (basemaps.cartocdn.com) started requiring an
-// API key as of Aug 2026 and now stamp an "API KEY REQUIRED" watermark over
-// every tile when no key is present, rather than failing to load. Esri's
-// Light Gray Canvas is the closest keyless equivalent to CARTO Voyager's
-// muted look, so it replaces CARTO here rather than needing a signup step.
-const primaryTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-  attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-  maxZoom: 16
-}).addTo(map);
-const primaryLabels = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
-  maxZoom: 16
-}).addTo(map);
-
-// Some mobile networks/browsers block or throttle third-party CDN tile
-// requests in ways desktop doesn't hit. If enough tiles fail to load
-// shortly after the map opens, fall back to OpenStreetMap's own tile
-// server, which is more consistently reachable everywhere. (This only
-// catches genuine load failures — it would not have caught the CARTO
-// watermark above, since that tile "succeeds" and just renders a notice.)
-let tileErrorCount = 0;
-let fallbackApplied = false;
-function handlePrimaryTileError(){
-  tileErrorCount++;
-  if(tileErrorCount >= 3 && !fallbackApplied){
-    fallbackApplied = true;
-    map.removeLayer(primaryTiles);
-    map.removeLayer(primaryLabels);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors',
-      maxZoom: 19
-    }).addTo(map);
-  }
-}
-primaryTiles.on('tileerror', handlePrimaryTileError);
-primaryLabels.on('tileerror', handlePrimaryTileError);
-
-// Leaflet sizes itself at creation time, which can happen before mobile
-// CSS (e.g. the #map height set in the @media rule) has fully applied —
-// especially on phones, where this often shows up as a blank/grey map.
-// Re-checking the size after load and on resize/orientation change fixes it.
-setTimeout(() => map.invalidateSize(), 200);
-window.addEventListener('resize', () => map.invalidateSize());
-window.addEventListener('orientationchange', () => setTimeout(() => map.invalidateSize(), 200));
-
-let ALL_LISTINGS = [];
-let activeFilter = 'all';
-let markers = [];
-  // --- URL-based filter lock: ?filter=rent or ?filter=sale ---
-const urlParams = new URLSearchParams(window.location.search);
-const lockedFilter = urlParams.get('filter');
-if (lockedFilter === 'rent' || lockedFilter === 'sale') {
-  activeFilter = lockedFilter;
+const params = new URLSearchParams(location.search);
+const locked = params.get('filter');
+if(locked === 'rent' || locked === 'sale'){
+  filter = locked;
   document.querySelector('.filters').style.display = 'none';
-  document.querySelector('.brand .tag').textContent =
-    lockedFilter === 'rent' ? 'Current rentals' : 'Current listings for sale';
+  document.querySelector('.brand .tag').textContent = locked === 'rent' ? 'Current rentals' : 'Current listings for sale';
 }
 
-function fmtPrice(l){
-  if(l.type === 'rent'){
-    return '$' + Number(l.price).toLocaleString() + '/mo';
-  }
-  return '$' + Number(l.price).toLocaleString();
+// ---------- map ----------
+let map = null;
+function showMapFallback(msg){
+  document.getElementById('map').innerHTML = `<div class="map-fallback">${msg}</div>`;
+  map = null;
 }
-
-function makeIcon(type){
-  return L.divIcon({
-    className: '',
-    html: `<div class="marker-pin ${type}"></div>`,
-    iconSize: [30,30],
-    iconAnchor: [15,28],
-    popupAnchor: [0,-26]
+try{
+  if(typeof maplibregl === 'undefined') throw new Error('MapLibre did not load');
+  if(maplibregl.supported && !maplibregl.supported()) throw new Error('WebGL not supported');
+  map = new maplibregl.Map({
+    container: 'map',
+    // OpenFreeMap: free, no API key, no usage limits.
+    style: 'https://tiles.openfreemap.org/styles/liberty',
+    center: [-112.0, 33.5], zoom: 8.5,
+    dragRotate: false, pitchWithRotate: false, touchPitch: false,
+    attributionControl: { compact: true }
   });
+  map.touchZoomRotate.disableRotation();
+  map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+  map.on('error', e => console.warn('Map error:', e && e.error));
+}catch(e){
+  console.warn(e);
+  showMapFallback('The map couldn\'t load on this device, but every listing is in the list.');
+}
+const onResize = () => map && map.resize();
+window.addEventListener('resize', onResize);
+window.addEventListener('orientationchange', () => setTimeout(onResize, 250));
+
+function setHighlight(idx, on){
+  const m = markers.get(idx), c = cards.get(idx);
+  if(m) m.el.classList.toggle('hl', on);
+  if(c) c.classList.toggle('hl', on);
+}
+function setActive(idx, {fly=false, scroll=false} = {}){
+  if(activeIdx !== null){
+    markers.get(activeIdx)?.el.classList.remove('active');
+    cards.get(activeIdx)?.classList.remove('active');
+  }
+  activeIdx = idx;
+  if(idx === null){ if(popup){ popup.remove(); popup = null; } return; }
+  const l = ALL[idx], m = markers.get(idx), c = cards.get(idx);
+  m?.el.classList.add('active'); c?.classList.add('active');
+  if(scroll && c) c.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  if(map && m){
+    if(fly) map.flyTo({ center:[l.lng, l.lat], zoom: Math.max(map.getZoom(), 13), speed: 1.4 });
+    if(popup) popup.remove();
+    popup = new maplibregl.Popup({ offset: 22, maxWidth: '280px', closeOnClick: true })
+      .setLngLat([l.lng, l.lat]).setHTML(popupHtml(l)).addTo(map);
+    popup.on('close', () => { if(activeIdx === idx){ m.el.classList.remove('active'); c?.classList.remove('active'); activeIdx = null; } });
+  }
 }
 
 function popupHtml(l){
-  const img = l.photo
-    ? `<img src="${l.photo}" alt="">`
-    : `<div style="width:100%;height:120px;border-radius:6px;margin-bottom:8px;background:var(--hairline);"></div>`;
-  return `<div class="popup ${l.type}">
-    ${img}
-    <div class="price">${fmtPrice(l)}</div>
-    <div class="addr">${l.address}</div>
-    <div class="stats">${l.beds} bd · ${l.baths} ba · ${Number(l.sqft).toLocaleString()} sqft</div>
-    <div class="meta">
-      <span class="pill">${l.type === 'sale' ? 'For sale' : 'For rent'}</span>${l.deal ? `<span class="deal-pill">${l.deal}</span>` : ''}
-      <span class="status">${l.status || ''}</span>
-    </div>
-    ${l.url ? `<a class="view-link" href="${l.url}" target="_blank" rel="noopener noreferrer">View full listing ↗</a>` : ''}
-  </div>`;
+  return `<div class="pop">
+    <div class="thumb">${photoHtml(l)}${l.deal ? `<div class="badge">${esc(l.deal)}</div>` : ''}</div>
+    <div class="body">
+      <div class="price">${priceHtml(l)}</div>
+      <div class="addr">${esc(l.address)}</div>
+      <div class="stats">${statsHtml(l)}</div>
+      <div class="row"><span class="tag ${l.type}">${l.type === 'sale' ? 'For sale' : 'For rent'}</span>
+      ${l.url ? `<a class="link" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">View listing ↗</a>` : ''}</div>
+    </div></div>`;
 }
 
+// ---------- render ----------
 function render(){
-  document.getElementById('list').innerHTML = '';
-  clusterGroup.clearLayers();
-  markers = [];
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  markers.forEach(m => m.marker.remove()); markers.clear(); cards.clear();
+  setActive(null);
 
-  const filtered = ALL_LISTINGS.filter(l => activeFilter === 'all' || l.type === activeFilter);
-  const bounds = [];
+  const shown = ALL.map((l, i) => [l, i]).filter(([l]) => filter === 'all' || l.type === filter);
+  const n = shown.length, one = n === 1;
+  const label = filter === 'rent' ? (one ? 'rental' : 'rentals')
+              : filter === 'sale' ? (one ? 'home for sale' : 'homes for sale')
+              : (one ? 'listing' : 'listings');
+  document.getElementById('count').innerHTML = n ? `<b>${n}</b> ${label}` : '';
+  if(!shown.length){ list.innerHTML = '<div class="empty">No listings right now — check back soon.</div>'; return; }
 
-  filtered.forEach(l => {
+  const bounds = map ? new maplibregl.LngLatBounds() : null;
+  shown.forEach(([l, i]) => {
     const hasCoords = l.lat != null && l.lng != null;
-    let marker = null;
-
-    if(hasCoords){
-      bounds.push([l.lat, l.lng]);
-      marker = L.marker([l.lat, l.lng], { icon: makeIcon(l.type) })
-        .bindPopup(popupHtml(l));
-      clusterGroup.addLayer(marker);
-      markers.push(marker);
-    }
 
     const card = document.createElement('div');
-    card.className = `listing-card ${l.type}`;
+    card.className = 'card';
     card.innerHTML = `
-      <div class="thumb" style="${l.photo ? `background-image:url('${l.photo}')` : ''}">${l.deal ? `<div class="thumb-deal-badge">${l.deal}</div>` : ''}</div>
+      <div class="thumb">${photoHtml(l)}${l.deal ? `<div class="badge">${esc(l.deal)}</div>` : ''}</div>
       <div class="info">
-        <div class="price">${fmtPrice(l)}</div>
-        <div class="addr">${l.address}</div>
-        <div class="stats">${l.beds} bd · ${l.baths} ba · ${Number(l.sqft).toLocaleString()} sqft</div>
-        <span class="pill">${l.type === 'sale' ? 'For sale' : 'For rent'}</span>${l.deal ? `<span class="deal-pill">${l.deal}</span>` : ''}
-        ${hasCoords ? '' : '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:var(--muted);margin-top:6px;">Map location pending</div>'}
-        ${l.url ? `<a class="view-link" href="${l.url}" target="_blank" rel="noopener noreferrer">View full listing ↗</a>` : ''}
+        <div class="price">${priceHtml(l)}</div>
+        <div class="addr">${esc(l.address)}</div>
+        <div class="stats">${statsHtml(l)}</div>
+        <div class="row">
+          <span class="tag ${l.type}">${l.type === 'sale' ? 'For sale' : 'For rent'}</span>
+          ${l.url ? `<a class="link" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">View listing ↗</a>` : ''}
+          ${hasCoords ? '' : '<span class="pending">Map location pending</span>'}
+        </div>
       </div>`;
-    if(hasCoords){
-      card.addEventListener('click', () => {
-        clusterGroup.zoomToShowLayer(marker, () => {
-          marker.openPopup();
-        });
-      });
-    } else {
-      card.style.cursor = 'default';
+    card.querySelector('.link')?.addEventListener('click', e => e.stopPropagation());
+    card.addEventListener('mouseenter', () => setHighlight(i, true));
+    card.addEventListener('mouseleave', () => setHighlight(i, false));
+    if(hasCoords) card.addEventListener('click', () => setActive(i, { fly: true }));
+    list.appendChild(card);
+    cards.set(i, card);
+
+    if(map && hasCoords){
+      // MapLibre positions the outer element absolutely; the styled price tag
+      // lives inside it so our CSS can't override that positioning.
+      const wrap = document.createElement('div');
+      const el = document.createElement('div');
+      el.className = `pin ${l.type}`;
+      el.textContent = shortPrice(l);
+      wrap.appendChild(el);
+      el.addEventListener('mouseenter', () => setHighlight(i, true));
+      el.addEventListener('mouseleave', () => setHighlight(i, false));
+      el.addEventListener('click', e => { e.stopPropagation(); setActive(i, { scroll: true }); });
+      const marker = new maplibregl.Marker({ element: wrap, anchor: 'bottom', offset: [0, -6] })
+        .setLngLat([l.lng, l.lat]).addTo(map);
+      markers.set(i, { marker, el });
+      bounds.extend([l.lng, l.lat]);
     }
-    const viewLink = card.querySelector('.view-link');
-    if(viewLink){
-      viewLink.addEventListener('click', (e) => e.stopPropagation());
-    }
-    document.getElementById('list').appendChild(card);
   });
 
-  if(bounds.length){
-    map.fitBounds(bounds, { padding: [40,40], maxZoom: 14 });
+  if(map && !bounds.isEmpty()){
+    const fit = () => map.fitBounds(bounds, { padding: { top: 60, bottom: 40, left: 50, right: 50 }, maxZoom: 13, duration: 0 });
+    map.loaded() ? fit() : map.once('load', fit);
   }
 }
 
-document.querySelectorAll('.filters button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeFilter = btn.dataset.type;
-    render();
-  });
-});
+document.querySelectorAll('.filters button').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filter = btn.dataset.type;
+  render();
+}));
 
 fetch('listings.json?_=' + Date.now())
   .then(r => r.json())
   .then(data => {
-    ALL_LISTINGS = data.listings || [];
+    // Skip half-filled rows in the sheet (e.g. a stray cell with no price or type)
+    // so they don't drop a pin somewhere random.
+    ALL = (data.listings || []).filter(l => l.address && +l.price > 0 && (l.type === 'rent' || l.type === 'sale'));
     if(data.updated){
-      const d = new Date(data.updated);
-      document.getElementById('updated').textContent = 'Listings updated ' + d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+      document.getElementById('updated').textContent = 'Updated ' +
+        new Date(data.updated).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' });
     }
     render();
   })
   .catch(err => {
-    document.getElementById('list').innerHTML = '<div style="padding:20px;color:var(--muted);font-size:13px;">Could not load listings.json</div>';
     console.error(err);
+    document.getElementById('count').textContent = '';
+    document.getElementById('list').innerHTML = '<div class="empty">Listings couldn\'t load. Please refresh.</div>';
   });
 </script>
 </body>

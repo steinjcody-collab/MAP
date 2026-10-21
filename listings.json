@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21T02:49:28Z",
+  "updated": "2026-10-21T17:44:59Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -39,7 +39,7 @@
       "type": "rent",
       "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
       "url": "https://www.homes.com/property/1229-w-4th-st-tempe-az-unit-3/0bcxees6eqbm7/",
-      "deal": "Up to 500 off!",
+      "deal": "Up to 500 off Move In!",
       "lat": 33.426399336763,
       "lng": -111.957311175535
     },
@@ -80,7 +80,7 @@
       "status": "Active",
       "type": "rent",
       "photo": "https://cdn.resize.sparkplatform.com/az/2048x1600/true/20260720215758245704000000-o.jpg",
-      "url": "",
+      "url": "https://www.zillow.com/homedetails/3708-E-Kerry-Ln-Phoenix-AZ-85050/81956384_zpid/?view=public",
       "deal": "",
       "lat": 33.661073156196,
       "lng": -112.002392438329
@@ -112,6 +112,132 @@
       "deal": "",
       "lat": 33.392271519325,
       "lng": -111.912576794445
+    },
+    {
+      "address": "2346 E Montecito Ave, Phoenix, AZ 85016",
+      "price": 509000,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 1204,
+      "status": "Active",
+      "type": "sale",
+      "photo": "https://images.homes.com/listings/102/8670011115-092908532/2346-e-montecito-ave-phoenix-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/2346-e-montecito-ave-phoenix-az/3fzy737937mhp/",
+      "deal": "Residential office",
+      "lat": 33.499223397145,
+      "lng": -112.031111100777
+    },
+    {
+      "address": "4332 N 24th St, Phoenix, AZ 85016",
+      "price": 490000,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 1152,
+      "status": "Active",
+      "type": "sale",
+      "photo": "https://images.homes.com/listings/102/7644511115-870118532/4332-n-24th-st-phoenix-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/4332-n-24th-st-phoenix-az/20kyprfmqlq2f/",
+      "deal": "Residential office",
+      "lat": 33.499613149911,
+      "lng": -112.030272829343
+    },
+    {
+      "address": "4336 N 24th St, Phoenix, AZ 85016",
+      "price": 445000,
+      "beds": 3,
+      "baths": 2,
+      "sqft": 1550,
+      "status": "Active",
+      "type": "sale",
+      "photo": "https://images.homes.com/listings/102/0609411115-209018532/4336-n-24th-st-phoenix-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/4336-n-24th-st-phoenix-az/8ed7gq6qgq0r1/",
+      "deal": "Bank-owned",
+      "lat": 33.499661397185,
+      "lng": -112.030272953611
+    },
+    {
+      "address": "4342 N 24th St, Phoenix, AZ 85016",
+      "price": 445000,
+      "beds": 3,
+      "baths": 2,
+      "sqft": 1517,
+      "status": "Active",
+      "type": "sale",
+      "photo": "https://images.homes.com/listings/102/6033811115-431218532/4342-n-24th-st-phoenix-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/4342-n-24th-st-phoenix-az/f9nknll1ljjb0/",
+      "deal": "Bank-owned",
+      "lat": 33.499733768097,
+      "lng": -112.030273140014
+    },
+    {
+      "address": "3331 N 66th St, Scottsdale, AZ 85251",
+      "price": 860000,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "status": "Active",
+      "type": "sale",
+      "photo": "https://images.homes.com/listings/102/9618913684-420775812/3331-n-66th-st-scottsdale-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/3331-n-66th-st-scottsdale-az/q5ge8er9gkwgx/",
+      "deal": "Multifamily \u00b7 Price cut",
+      "lat": 33.48663416486,
+      "lng": -111.938450146338
+    },
+    {
+      "address": "3325 N 66th St, Scottsdale, AZ 85251",
+      "price": 860000,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "status": "Active",
+      "type": "sale",
+      "photo": "https://images.homes.com/listings/102/3309913684-630775812/3325-n-66th-st-scottsdale-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/3325-n-66th-st-scottsdale-az/6z1ylqy1clq58/",
+      "deal": "Multifamily \u00b7 Price cut",
+      "lat": 33.48656053023,
+      "lng": -111.93845056611
+    },
+    {
+      "address": "3319 N 66th St, Scottsdale, AZ 85251",
+      "price": 1050000,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "status": "Active",
+      "type": "sale",
+      "photo": "https://images.homes.com/listings/102/3415913684-949675812/3319-n-66th-st-scottsdale-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/3319-n-66th-st-scottsdale-az/t6b5qbh1eqk59/",
+      "deal": "5 units \u00b7 Price cut",
+      "lat": 33.486487173622,
+      "lng": -111.938451222773
+    },
+    {
+      "address": "3220 N 66th Place, Scottsdale, AZ 85251",
+      "price": 3105000,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "status": "Active",
+      "type": "sale",
+      "photo": "https://images.homes.com/listings/102/2114852684-099445812/3220-n-66th-place-scottsdale-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/3220-n-66th-place-scottsdale-az/h2n4hek5rdj96/",
+      "deal": "15 units",
+      "lat": 33.485587936093,
+      "lng": -111.937641098071
+    },
+    {
+      "address": "3313 N 66th St, Scottsdale, AZ 85251",
+      "price": 840000,
+      "beds": 0,
+      "baths": 0,
+      "sqft": 0,
+      "status": "Under Contract",
+      "type": "sale",
+      "photo": "https://images.homes.com/listings/102/5871913684-268675812/3313-n-66th-st-scottsdale-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/3313-n-66th-st-scottsdale-az/z25tylkdpsbzq/",
+      "deal": "Under contract",
+      "lat": 33.486413817014,
+      "lng": -111.938451879436
     }
   ]
 }

@@ -1,9 +1,9 @@
 {
-  "updated": "2026-10-21T17:44:59Z",
+  "updated": "2026-10-22T17:43:55Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
-      "price": 2500,
+      "price": 2450,
       "beds": 4,
       "baths": 2.5,
       "sqft": 1464,
@@ -73,7 +73,7 @@
     },
     {
       "address": "3708 E Kerry Ln Phoenix Az",
-      "price": 3100,
+      "price": 2800,
       "beds": 3,
       "baths": 3,
       "sqft": 1813,

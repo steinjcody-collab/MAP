@@ -1,6 +1,16 @@
 {
-  "updated": "2026-10-22T17:43:55Z",
+  "updated": "2026-10-23T17:34:21Z",
   "listings": [
+    {
+      "city": "",
+      "beds": 3,
+      "baths": 3,
+      "sqft": 1813,
+      "photo": "https://cdn.resize.sparkplatform.com/az/2048x1600/true/20260720215758245704000000-o.jpg",
+      "yearCompleted": "",
+      "lat": 33.661073156196,
+      "lng": -112.002392438329
+    },
     {
       "city": "Phoenix, AZ",
       "beds": 2,

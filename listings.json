@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22T17:43:55Z",
+  "updated": "2026-10-23T17:34:21Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -70,20 +70,6 @@
       "deal": "",
       "lat": 32.880675967627,
       "lng": -111.754846144269
-    },
-    {
-      "address": "3708 E Kerry Ln Phoenix Az",
-      "price": 2800,
-      "beds": 3,
-      "baths": 3,
-      "sqft": 1813,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://cdn.resize.sparkplatform.com/az/2048x1600/true/20260720215758245704000000-o.jpg",
-      "url": "https://www.zillow.com/homedetails/3708-E-Kerry-Ln-Phoenix-AZ-85050/81956384_zpid/?view=public",
-      "deal": "",
-      "lat": 33.661073156196,
-      "lng": -112.002392438329
     },
     {
       "address": "30600 N Pima Rd Unit 19, Scottsdale, AZ",

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T17:34:21Z",
+  "updated": "2026-10-24T16:19:52Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -44,20 +44,6 @@
       "lng": -111.957311175535
     },
     {
-      "address": "3173 W Peak View Rd, Phoenix, AZ",
-      "price": 3900,
-      "beds": 4,
-      "baths": 3,
-      "sqft": 2649,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/210/1077242794-875969522/3173-w-peak-view-rd-phoenix-az-primaryphoto.jpg?t=p",
-      "url": "https://www.homes.com/property/3173-w-peak-view-rd-phoenix-az/ypeqc39jyv2k1/",
-      "deal": "",
-      "lat": 33.7473023,
-      "lng": -112.1271217
-    },
-    {
       "address": "803 N Park Ave, Casa Grande, AZ",
       "price": 1250,
       "beds": 2,
@@ -89,7 +75,7 @@
       "address": "3320 S Juniper St, Tempe, AZ",
       "price": 2200,
       "beds": 3,
-      "baths": 3,
+      "baths": 2.5,
       "sqft": 1704,
       "status": "Active",
       "type": "rent",

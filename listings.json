@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T18:28:27Z",
+  "updated": "2026-10-28T18:33:49Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -17,7 +17,7 @@
     },
     {
       "address": "3908 W Rose Garden Ln, Glendale, AZ 85308",
-      "price": 3100,
+      "price": 2900,
       "beds": 4,
       "baths": 2,
       "sqft": 1767,
@@ -28,20 +28,6 @@
       "deal": "",
       "lat": 33.676919499861,
       "lng": -112.145183522309
-    },
-    {
-      "address": "1229 W 4th St Unit 3, Tempe, AZ",
-      "price": 1675.0,
-      "beds": 2,
-      "baths": 1,
-      "sqft": 825,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
-      "url": "https://www.homes.com/property/1229-w-4th-st-tempe-az-unit-3/0bcxees6eqbm7/",
-      "deal": "Up to 500 off Move In!",
-      "lat": 33.426399336763,
-      "lng": -111.957311175535
     },
     {
       "address": "803 N Park Ave, Casa Grande, AZ",
@@ -193,7 +179,7 @@
       "type": "sale",
       "photo": "https://images.homes.com/listings/102/2114852684-099445812/3220-n-66th-place-scottsdale-az-primaryphoto.jpg",
       "url": "https://www.homes.com/property/3220-n-66th-place-scottsdale-az/h2n4hek5rdj96/",
-      "deal": "15 units",
+      "deal": "Under contract",
       "lat": 33.485587936093,
       "lng": -111.937641098071
     },
@@ -207,7 +193,7 @@
       "type": "sale",
       "photo": "https://images.homes.com/listings/102/5871913684-268675812/3313-n-66th-st-scottsdale-az-primaryphoto.jpg",
       "url": "https://www.homes.com/property/3313-n-66th-st-scottsdale-az/z25tylkdpsbzq/",
-      "deal": "Under contract",
+      "deal": "Multifamily \u00b7 Price cut",
       "lat": 33.486413817014,
       "lng": -111.938451879436
     }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T18:28:27Z",
+  "updated": "2026-10-28T18:33:49Z",
   "listings": [
     {
       "city": "",
@@ -10,6 +10,16 @@
       "yearCompleted": "",
       "lat": 33.661073156196,
       "lng": -112.002392438329
+    },
+    {
+      "city": "Tempe, AZ",
+      "beds": 2,
+      "baths": 1,
+      "sqft": 825,
+      "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
+      "yearCompleted": "",
+      "lat": 33.426398467772,
+      "lng": -111.957312238408
     },
     {
       "city": "Phoenix, AZ",

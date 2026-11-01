@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31T17:25:37Z",
+  "updated": "2026-11-01T18:10:56Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -196,6 +196,20 @@
       "deal": "Multifamily \u00b7 Price cut",
       "lat": 33.486413817014,
       "lng": -111.938451879436
+    },
+    {
+      "address": "1229 W 4th St Unit 3, Tempe, AZ",
+      "price": 1675.0,
+      "beds": 2,
+      "baths": 1,
+      "sqft": 825,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://images.homes.com/listings/102/1092171305-505633132/1229-w-4th-st-tempe-az-primaryphoto.jpg",
+      "url": "https://www.homes.com/property/1229-w-4th-st-tempe-az-unit-3/0bcxees6eqbm7/",
+      "deal": "",
+      "lat": 33.426398467772,
+      "lng": -111.957312238408
     }
   ]
 }

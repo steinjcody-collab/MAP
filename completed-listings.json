@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T21:59:52Z",
+  "updated": "2026-11-03T19:53:10Z",
   "listings": [
     {
       "city": "",
@@ -10,16 +10,6 @@
       "yearCompleted": "",
       "lat": 33.661073156196,
       "lng": -112.002392438329
-    },
-    {
-      "city": "Phoenix, AZ",
-      "beds": 2,
-      "baths": 1,
-      "sqft": 900,
-      "photo": "https://photos.zillowstatic.com/fp/8128275b7f4d6a3652277d91685ed360-cc_ft_1536.jpg",
-      "yearCompleted": "",
-      "lat": 33.59658051457,
-      "lng": -112.102052291675
     },
     {
       "city": "Tempe, AZ",

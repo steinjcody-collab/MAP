@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T21:59:52Z",
+  "updated": "2026-11-03T19:53:10Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
@@ -210,6 +210,20 @@
       "deal": "",
       "lat": 33.426398467772,
       "lng": -111.957312238408
+    },
+    {
+      "address": "2016 W Cactus Rd Unit C, Phoenix, AZ",
+      "price": 1300,
+      "beds": 2,
+      "baths": 1,
+      "sqft": 900,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://photos.zillowstatic.com/fp/8128275b7f4d6a3652277d91685ed360-cc_ft_1536.jpg",
+      "url": "https://www.zillow.com/homedetails/2016-W-Cactus-Rd-Phoenix-AZ-85029/7738572_zpid/",
+      "deal": "",
+      "lat": 33.59658051457,
+      "lng": -112.102052291675
     }
   ]
 }

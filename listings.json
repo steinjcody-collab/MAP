@@ -1,9 +1,9 @@
 {
-  "updated": "2026-11-10T20:05:27Z",
+  "updated": "2026-11-11T19:55:00Z",
   "listings": [
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
-      "price": 2450,
+      "price": 2400,
       "beds": 4,
       "baths": 2.5,
       "sqft": 1464,
@@ -16,22 +16,8 @@
       "lng": -112.05302663526
     },
     {
-      "address": "3908 W Rose Garden Ln, Glendale, AZ 85308",
-      "price": 2900,
-      "beds": 4,
-      "baths": 2,
-      "sqft": 1767,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://photos.zillowstatic.com/fp/7029b4c3a9e35d9584ac63dc889dd177-cc_ft_1536.jpg",
-      "url": "https://www.zillow.com/homedetails/3908-W-Rose-Garden-Ln-Glendale-AZ-85308/59266289_zpid/?view=public",
-      "deal": "",
-      "lat": 33.676919499861,
-      "lng": -112.145183522309
-    },
-    {
       "address": "803 N Park Ave, Casa Grande, AZ",
-      "price": 1250,
+      "price": 1175,
       "beds": 2,
       "baths": 1,
       "sqft": 850,
@@ -59,7 +45,7 @@
     },
     {
       "address": "3320 S Juniper St, Tempe, AZ",
-      "price": 2200,
+      "price": 2000,
       "beds": 3,
       "baths": 2.5,
       "sqft": 1704,
@@ -70,6 +56,34 @@
       "deal": "",
       "lat": 33.392271519325,
       "lng": -111.912576794445
+    },
+    {
+      "address": "2016 W Cactus Rd Unit C, Phoenix, AZ",
+      "price": 1300,
+      "beds": 2,
+      "baths": 1,
+      "sqft": 900,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://lh3.googleusercontent.com/d/14OR2_1pGiKJ3w2pWgEngsaddYJLVNKCl=w1600",
+      "url": "https://www.zillow.com/homedetails/2016-W-Cactus-Rd-Phoenix-AZ-85029/7738572_zpid/",
+      "deal": "",
+      "lat": 33.59658051457,
+      "lng": -112.102052291675
+    },
+    {
+      "address": "718 W Hazelwood St Unit 1, Phoenix, AZ 85013",
+      "price": 1650,
+      "beds": 2,
+      "baths": 1,
+      "sqft": 920,
+      "status": "Active",
+      "type": "rent",
+      "photo": "",
+      "url": "",
+      "deal": "",
+      "lat": 33.503763530382,
+      "lng": -112.083134592126
     },
     {
       "address": "2346 E Montecito Ave, Phoenix, AZ 85016",
@@ -165,7 +179,7 @@
       "type": "sale",
       "photo": "https://images.homes.com/listings/102/3415913684-949675812/3319-n-66th-st-scottsdale-az-primaryphoto.jpg",
       "url": "https://www.homes.com/property/3319-n-66th-st-scottsdale-az/t6b5qbh1eqk59/",
-      "deal": "5 units \u00b7 Price cut",
+      "deal": "Multifamily \u00b7 Price cut",
       "lat": 33.486487173622,
       "lng": -111.938451222773
     },
@@ -179,7 +193,7 @@
       "type": "sale",
       "photo": "https://images.homes.com/listings/102/2114852684-099445812/3220-n-66th-place-scottsdale-az-primaryphoto.jpg",
       "url": "https://www.homes.com/property/3220-n-66th-place-scottsdale-az/h2n4hek5rdj96/",
-      "deal": "Under contract",
+      "deal": "Multifamily \u00b7 Price cut",
       "lat": 33.485587936093,
       "lng": -111.937641098071
     },
@@ -189,27 +203,13 @@
       "beds": 0,
       "baths": 0,
       "sqft": 0,
-      "status": "Under Contract",
+      "status": "Active",
       "type": "sale",
       "photo": "https://images.homes.com/listings/102/5871913684-268675812/3313-n-66th-st-scottsdale-az-primaryphoto.jpg",
       "url": "https://www.homes.com/property/3313-n-66th-st-scottsdale-az/z25tylkdpsbzq/",
       "deal": "Multifamily \u00b7 Price cut",
       "lat": 33.486413817014,
       "lng": -111.938451879436
-    },
-    {
-      "address": "2016 W Cactus Rd Unit C, Phoenix, AZ",
-      "price": 1300,
-      "beds": 2,
-      "baths": 1,
-      "sqft": 900,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://drive.google.com/file/d/14OR2_1pGiKJ3w2pWgEngsaddYJLVNKCl/view?usp=drive_link",
-      "url": "https://www.zillow.com/homedetails/2016-W-Cactus-Rd-Phoenix-AZ-85029/7738572_zpid/",
-      "deal": "",
-      "lat": 33.59658051457,
-      "lng": -112.102052291675
     }
   ]
 }

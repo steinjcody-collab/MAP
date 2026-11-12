@@ -1,6 +1,62 @@
 {
-  "updated": "2026-11-11T19:55:00Z",
+  "updated": "2026-11-12T20:31:44Z",
   "listings": [
+    {
+      "address": "1201 W Vogel Ave, Phoenix, AZ 85021",
+      "price": 1500,
+      "beds": 3,
+      "baths": 1,
+      "sqft": 664,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://photos.zillowstatic.com/fp/bd606f32ca1d85178d827f529b9dae2a-cc_ft_1536.webp",
+      "url": "https://www.zillow.com/homedetails/1201-W-Vogel-Ave-Phoenix-AZ-85021/7781950_zpid/?view=public",
+      "deal": "",
+      "lat": 33.573023566373,
+      "lng": -112.088031611022
+    },
+    {
+      "address": "718 W Hazelwood St Unit 1, Phoenix, AZ 85013",
+      "price": 1650,
+      "beds": 2,
+      "baths": 1,
+      "sqft": 920,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://cdn.resize.sparkplatform.com/az/1600x1200/true/20261111141122453240000000-o.jpg",
+      "url": "https://www.zillow.com/b/718-w-hazelwood-st-phoenix-az-9TTvPm/",
+      "deal": "",
+      "lat": 33.503763530382,
+      "lng": -112.083134592126
+    },
+    {
+      "address": "4227 N 26th St Unit B, Phoenix, AZ 85016",
+      "price": 1750,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 650,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://photos.zillowstatic.com/fp/3fd831917dc4fc1c08138cb79897dbbc-cc_ft_1536.webp",
+      "url": "https://www.zillow.com/b/4227-n-26th-st-phoenix-az-5Xr2z2/",
+      "deal": "",
+      "lat": 33.497580536245,
+      "lng": -112.02580547021
+    },
+    {
+      "address": "3320 S Juniper St, Tempe, AZ",
+      "price": 2000,
+      "beds": 3,
+      "baths": 2.5,
+      "sqft": 1704,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://cdn.resize.sparkplatform.com/az/1600x1200/true/20261023222731031637000000-o.jpg",
+      "url": "https://www.zillow.com/homedetails/3320-S-Juniper-St-Tempe-AZ-85282/7593142_zpid/?altId=100066001_5920edd2cd34c47d868e911259b37c5bb851eea4b3141a42422a724fa265d1fa",
+      "deal": "",
+      "lat": 33.392271519325,
+      "lng": -111.912576794445
+    },
     {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
       "price": 2400,
@@ -44,20 +100,6 @@
       "lng": -111.8967275
     },
     {
-      "address": "3320 S Juniper St, Tempe, AZ",
-      "price": 2000,
-      "beds": 3,
-      "baths": 2.5,
-      "sqft": 1704,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://photos.zillowstatic.com/fp/e45ea9b757fde3bf66e4d768273080d7-cc_ft_1536.jpg",
-      "url": "https://www.zillow.com/homedetails/3320-S-Juniper-St-Tempe-AZ-85282/7593142_zpid/",
-      "deal": "",
-      "lat": 33.392271519325,
-      "lng": -111.912576794445
-    },
-    {
       "address": "2016 W Cactus Rd Unit C, Phoenix, AZ",
       "price": 1300,
       "beds": 2,
@@ -70,20 +112,6 @@
       "deal": "",
       "lat": 33.59658051457,
       "lng": -112.102052291675
-    },
-    {
-      "address": "718 W Hazelwood St Unit 1, Phoenix, AZ 85013",
-      "price": 1650,
-      "beds": 2,
-      "baths": 1,
-      "sqft": 920,
-      "status": "Active",
-      "type": "rent",
-      "photo": "",
-      "url": "",
-      "deal": "",
-      "lat": 33.503763530382,
-      "lng": -112.083134592126
     },
     {
       "address": "2346 E Montecito Ave, Phoenix, AZ 85016",

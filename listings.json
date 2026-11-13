@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T20:31:44Z",
+  "updated": "2026-11-13T20:08:34Z",
   "listings": [
     {
       "address": "1201 W Vogel Ave, Phoenix, AZ 85021",
@@ -58,6 +58,20 @@
       "lng": -111.912576794445
     },
     {
+      "address": "2016 W Cactus Rd Unit C, Phoenix, AZ",
+      "price": 1300,
+      "beds": 2,
+      "baths": 1,
+      "sqft": 900,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://lh3.googleusercontent.com/d/14OR2_1pGiKJ3w2pWgEngsaddYJLVNKCl=w1600",
+      "url": "https://www.zillow.com/homedetails/2016-W-Cactus-Rd-Phoenix-AZ-85029/7738572_zpid/",
+      "deal": "",
+      "lat": 33.59658051457,
+      "lng": -112.102052291675
+    },
+    {
       "address": "1332 E Dunbar Dr, Phoenix, AZ 85042",
       "price": 2400,
       "beds": 4,
@@ -98,20 +112,6 @@
       "deal": "",
       "lat": 33.7662245,
       "lng": -111.8967275
-    },
-    {
-      "address": "2016 W Cactus Rd Unit C, Phoenix, AZ",
-      "price": 1300,
-      "beds": 2,
-      "baths": 1,
-      "sqft": 900,
-      "status": "Active",
-      "type": "rent",
-      "photo": "https://lh3.googleusercontent.com/d/14OR2_1pGiKJ3w2pWgEngsaddYJLVNKCl=w1600",
-      "url": "https://www.zillow.com/homedetails/2016-W-Cactus-Rd-Phoenix-AZ-85029/7738572_zpid/",
-      "deal": "",
-      "lat": 33.59658051457,
-      "lng": -112.102052291675
     },
     {
       "address": "2346 E Montecito Ave, Phoenix, AZ 85016",

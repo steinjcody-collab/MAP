@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T20:02:06Z",
+  "updated": "2026-11-24T00:27:58Z",
   "listings": [
     {
       "address": "1233 W 4th St Unit 2, Tempe, AZ 85281",
@@ -308,6 +308,34 @@
       "deal": "Multifamily \u00b7 Price cut",
       "lat": 33.486413817014,
       "lng": -111.938451879436
+    },
+    {
+      "address": "3009 N 36th St Unit 11, Phoenix, AZ 85018",
+      "price": 1200,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 650,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://cdn.resize.sparkplatform.com/az/1600x1200/true/20261122061845938836000000-o.jpg",
+      "url": "",
+      "deal": "",
+      "lat": 33.482504459267,
+      "lng": -112.004127231757
+    },
+    {
+      "address": "3009 N 36th St Unit 8, Phoenix, AZ 85018",
+      "price": 1400,
+      "beds": 2,
+      "baths": 1.5,
+      "sqft": 820,
+      "status": "Active",
+      "type": "rent",
+      "photo": "https://cdn.resize.sparkplatform.com/az/1600x1200/true/20261122063541311015000000-o.jpg",
+      "url": "",
+      "deal": "",
+      "lat": 33.482504459267,
+      "lng": -112.004127231757
     }
   ]
 }
